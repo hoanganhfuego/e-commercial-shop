@@ -1,12 +1,13 @@
 import Product from "./Product";
-import data from "../data"
+import { useSelector } from "react-redux/es/exports";
 
 function Products(props){
 
+    const data = useSelector(state => state.dataProduct)
+
     const dataProduct = data.map((product, index) => {
         const {id, name, price, img, status, category} = product
-        if(product.category === props.categoryType)
-        return (
+        if(product.category === props.categoryType) return (
             <Product 
                 key = {id}
                 id = {index}
@@ -17,7 +18,7 @@ function Products(props){
                 category = {category}
             />
         )
-        if(!props.categoryType) return (
+        else if(!props.categoryType) return (
             <Product 
                 key = {id}
                 id = {index}

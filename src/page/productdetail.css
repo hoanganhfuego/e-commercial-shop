@@ -1,0 +1,12 @@
+.product-detail-page{
+    width: 1380px;
+    padding: 0 10px;
+}
+
+.product-detail-page-main img{
+    width: 400px;
+}
+
+.product-detail-page-cover{
+    display: flex;
+}

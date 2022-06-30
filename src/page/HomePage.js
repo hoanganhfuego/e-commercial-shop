@@ -1,44 +1,11 @@
-import { useEffect, useRef, useState } from "react";
 import {Link} from "react-router-dom";
 import './homepage.css'
+import { useEffect } from "react";
 
 export default function HomePage(){
-    
-    const [scrollBottomChild, setScrollBottomChild] = useState([])
-    const [scrollBottomParent, setScrollBottomParent] = useState([])
-    const [scrollDown, setSrollDown] = useState(0)
-    const scrollRef = useRef()
-    
-    function scrollEvent(event){
-        if (event.deltaY > 0) {
-            setSrollDown(prev => prev + 1)
-            let i
-            for(i = 0; i<scrollBottomChild.length; i++){
-                if(scrollBottomChild[i] == scrollBottomParent[i]){
-                    setSrollDown(prev => prev)
-                }
-            }
-        }
-        if (event.deltaY < 0){
-            setSrollDown(prev => prev - 1)
-        }
-    }
-    console.log('xin chao')
     useEffect(()=>{
-        setScrollBottomChild(scrollRef.current.getBoundingClientRect().bottom)
-    }, [])
-    useEffect(()=>{
-        window.addEventListener('wheel', scrollEvent)
-        const scrollBottomParentsValue = []
-        const scrollBottomParents = document.querySelectorAll('.row-homepage').forEach(item => scrollBottomParentsValue.push(item.getBoundingClientRect().bottom))
-        setScrollBottomParent(scrollBottomParentsValue)
-        const scrollBottomChildsValue = []
-        const scrollBottomChilds = document.querySelectorAll('.row-homepage').forEach(item => scrollBottomParentsValue.push(item.getBoundingClientRect().bottom))
-        setScrollBottomChild(scrollBottomChildsValue)
-    }, [scrollDown])
-
-
-
+        window.scroll(0,0)
+    },[])
     return(
         <div className="homepage">
             <div className="homepage-navbar">
@@ -51,39 +18,70 @@ export default function HomePage(){
                 </ul>
             </div>
             <div className="row-homepage">
-                <div className="product-content" ref={scrollRef} style={{bottom: `${300-scrollDown}px`}}>
-                    <h3><strong>NEW COLECTION</strong></h3>
-                    <h4><strong>BLAST THIS SUMMER</strong></h4>
-                    <button>VIEW NOW</button>
+                <div className="test">
+                    <div className="product-content">
+                        <h3><strong>NEW COLECTION</strong></h3>
+                        <h4><strong>BLAST THIS SUMMER</strong></h4>
+                        <button><Link to='/products' style={{ textDecoration: 'none', color: 'black' }}>VIEW NOW</Link></button>
+                    </div>
                 </div>
                 <img src="https://www.hm.com/nt-north/uploads/2022/06/FNP-1006A-3x2-summer-stunners-1920x1280.jpg" width={'100%'}></img>
             </div>
             <div className="row-homepage">
-                <div className="product-content" style={{bottom: `${300-scrollDown}px`}}>
-                    <h3><strong>NEW T-SHIRT COLECTION</strong></h3>
-                    <h4><strong>BLAST THIS SUMMER</strong></h4>
-                    <button>VIEW NOW</button>
+                <div className="test">
+                    <div className="product-content">
+                        <h3><strong>NEW T-SHIRT COLECTION</strong></h3>
+                        <h4><strong>BLAST THIS SUMMER</strong></h4>
+                        <button><Link to='/products' style={{ textDecoration: 'none', color: 'black' }}>VIEW NOW</Link></button>
+                    </div>
                 </div>
                 <img src="https://www.hm.com/nt-north/uploads/2022/06/5026F-3x2-1-1920x1280.jpg" width={'100%'}></img>
                 </div>
             <div className="row-homepage">
-                <div className="product-content" style={{bottom: `${300-scrollDown}px`}}>
-                    <h3><strong>NEW SHIRT COLECTION</strong></h3>
-                    <h4><strong>BLAST THIS SUMMER</strong></h4>
-                    <button>VIEW NOW</button>
+                <div className="test">
+                    <div className="product-content" >
+                        <h3><strong>NEW SHIRT COLECTION</strong></h3>
+                        <h4><strong>BLAST THIS SUMMER</strong></h4>
+                        <button><Link to='/products' style={{ textDecoration: 'none', color: 'black' }}>VIEW NOW</Link></button>
+                    </div>
                 </div>
                     <img src="https://www.hm.com/nt-north/uploads/2022/06/4076A-3x2-paw-patrol-1920x1280.jpg" width={'100%'}></img>
                 </div>
             <div className="row-homepage">
-                <div className="product-content" style={{bottom: `${300-scrollDown}px`}}>
-                    <h3><strong>NEW SHORT COLECTION</strong></h3>
-                    <h4><strong>BLAST THIS SUMMER</strong></h4>
-                    <button>VIEW NOW</button>
+                <div className="test">
+                    <div className="product-content" >
+                        <h3><strong>NEW SHORT COLECTION</strong></h3>
+                        <h4><strong>BLAST THIS SUMMER</strong></h4>
+                        <button><Link to='/products' style={{ textDecoration: 'none', color: 'black' }}>VIEW NOW</Link></button>
+                    </div>
                 </div>
                 <img src="https://www.hm.com/nt-north/uploads/2022/06/4115C-3x2-making-a-splash-1920x1280.jpg" width={'100%'}></img>
             </div>
-            <Link to='/products'>explore</Link>
-            <Link to='/productDetail'>explore</Link>
+            <div className="homepage-footer">
+                <div className="homepage-footer-main">
+                    <div className="homepage-footer-infor">
+                        <p><strong>Coporate infor</strong></p>
+                        <ul>
+                            <li>Career at H&amp;M</li>
+                            <li>About H&amp;M Group</li>
+                            <li>Sustainability</li>
+                            <li>Press</li>
+                            <li>Investor Relations</li>
+                            <li>Corporate Governance</li>
+                        </ul>
+                    </div>
+                    <div className="hoempage-footer-help">
+                        <p><strong>Help</strong></p>
+                        <ul>
+                            <li>Customer Service</li>
+                            <li>Privacy Notice</li>
+                            <li>Enable high contrast mode</li>
+                        </ul>
+                    </div>
+                </div>
+                <p style={{marginTop: '50px'}}>H&amp;M’s business concept is to offer fashion and quality at the best price in a sustainable way.</p>
+                <p> H&amp;M has since it was founded in 1947 grown into one of the world’s leading fashion companies. The content of this site is copyright-protected and is the property of H&amp;M Hennes &amp; Mauritz AB.</p>
+            </div>
         </div>
     )
 }

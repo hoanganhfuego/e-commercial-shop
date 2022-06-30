@@ -18,9 +18,13 @@ export const reducers = {
 
 export const reducerCart = {
     increaseCart(state, action){
-        return (state.productID.includes(action.payload.id)? {...state}:
-        {...state, productADD: true, amount: state.amount+1, productID: [...state.productID, action.payload.id], productInfor:[...state.productInfor, action.payload], 
-            priceAmount:[...state.priceAmount, {price: action.payload.price, amount: 1, id:action.payload.id}]})
+        return (state.productID.includes(action.payload.id)? 
+        {...state}:
+        {...state,
+        productADD: true, 
+        amount: state.amount+1, productID: [...state.productID, action.payload.id], 
+        productInfor:[...state.productInfor, action.payload], 
+        priceAmount:[...state.priceAmount, {price: action.payload.price, amount: 1, id:action.payload.id}]})
     },
     cartIncrease(state, action){
         return {...state, priceAmount: state.priceAmount.map((item, index)=>{
@@ -52,5 +56,19 @@ export const reducerCart = {
                     amount: action.payload.value}:
                 {...item})
             })}
+    }
+}
+
+export const reducersSeenProduct = {
+    addToSeenProduct(state, action){
+        return state.some(item => item.id == action.payload.id)?
+        [...state]:[action.payload, ...state]
+    },
+
+}
+
+export const reducersProductDetail = {
+    openProductDetail(state, action){
+        return action.payload
     }
 }

@@ -1,20 +1,30 @@
 /* common */
 .row-homepage{
-    margin-bottom: 40px;
     position: relative;
+    height: fit-content;
+    margin-bottom: 40px;
 }
 
 .row-homepage img{
     z-index: -1;
 }
 
+.test{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
 .product-content{
+    margin-top: 300px;
+    overflow: hidden;
     text-align: center;
     width: 100%;
-    position: absolute;
-    bottom: 300px;
+    top: 200px;
+    position: sticky;
     color: white;
     font-size: 30px;
+    margin-bottom: 40px;
 }
 
 .product-content h3{
@@ -27,6 +37,7 @@
     padding: 10px 20px;
     font-weight: 600;
 }
+
 /* common */
 
 .homepage{
@@ -36,15 +47,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 100%;
 }
 
 .homepage-navbar{
+    background-color: white;
+    z-index: 1;
+    position: sticky;
+    top: 0;
     width: 100%;
+    height: fit-content;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    padding: 40px 0;
+    padding: 20px 0;
 }
 
 .homepage-navbar ul{
@@ -59,6 +73,7 @@
 }
 
 .homepage-navbar-logo{
+    user-select: none;
     text-align: center;
     font-size: 60px;
     font-weight: bold;
@@ -67,4 +82,44 @@
 .homepage-navbar-menu{
     margin-top: auto;
     margin-bottom: auto;
+}
+
+.homepage-footer{
+    background-color: #E4E4E4;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.homepage-footer p{
+    text-align: center;
+    max-width: 500px;
+    font-size: 13px;
+}
+
+.homepage-footer ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.homepage-footer ul li{
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.homepage-footer ul li:hover{
+    text-decoration: underline;
+}
+
+.homepage-footer-main{
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.homepage-footer-main p{
+    text-align: left;
 }

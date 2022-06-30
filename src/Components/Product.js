@@ -1,12 +1,20 @@
-import { useDispatch } from "react-redux";
-import { action } from "../store/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { actionCart } from "../store/cartSlice";
+import { actionSeen } from "../store/seenProduct";
+import { Link } from 'react-router-dom'
+import { actionProductDetail } from "../store/productDetail";
 
 function Product(props){
+    const seenProduct = useSelector(state => state.seenProduct)
     const dispatch = useDispatch()
     const {id, name, price, img, status, category} = props
 
     function addToCart(){
-        dispatch(action.increaseCart(props))
+        dispatch(actionCart.increaseCart(props))
+    }
+    function checkProductDetail(){
+        dispatch(actionSeen.addToSeenProduct(props))
+        dispatch(actionProductDetail.openProductDetail(props))
     }
    
     return(
@@ -18,7 +26,7 @@ function Product(props){
                 </div>
                 <div className="product-btn row">
                     <button className="btn col-2 cs" onClick={addToCart} id={id}>add to cart</button>
-                    <button className="btn2 btn col-2 cs">buy now</button>
+                    <Link to='/productdetail' style={{color:'black'}}><button className="btn2 btn col-2 cs" onClick={checkProductDetail}>more detail</button></Link>
                 </div>
             </div>
             <div className="product-detail tc">

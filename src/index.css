@@ -66,9 +66,11 @@ code {
   width: 1903px;
   height: 100%;
 }
+
 .display-section{
   height: fit-content;
 }
+
 .navbar{
   z-index: 1;
   position: sticky;
@@ -108,16 +110,50 @@ code {
 }
 
 .products{
-  max-width: 70%;
-  float: right;
+  width: 70%;
+  max-height: fit-content;
   padding: 0;
 }
 
+.products-main{
+  display: flex;
+  flex-direction: column;
+}
+
+.products-main-child{
+  padding: 0 10px;
+  box-sizing: border-box;
+  border: solid 2px black;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
 .product{
+  margin: 20px 0;
+  overflow: hidden;
+  width: fit-content;
+  box-sizing: content-box;
+  width: 292px;
   box-sizing: border-box;
   padding: 0 15px;
   transition: box-shadow 500ms;
   border-radius: 10px;
+}
+
+.product h3{
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.product h2{
+  margin-bottom: 0;
+}
+
+.product:hover{
+  box-shadow: 0 5px 15px rgb(0 0 0 / 35%);
 }
 
 .product-img-btn{
@@ -130,16 +166,13 @@ code {
 }
 
 .btn{
-  font-size: 20px;
-  padding: 10px 20px;
+  color: white;
+  font-size: 15px;
+  padding: 5px 10px;
   width: 145px;
-  border: solid 1px black;
+  border: solid 1px white;
+  background-color: black;
 }
-
-.product:hover{
-  box-shadow: 0 5px 15px rgb(0 0 0 / 35%);
-}
-
 
 .product-btn{
   position: absolute;
@@ -170,6 +203,10 @@ code {
   box-sizing: border-box;
 }
 
+.category li:first-child{
+  margin-top: 0;
+}
+
 .category li::after{
   content: "";
   border: solid 1px transparent;
@@ -191,6 +228,7 @@ code {
 
 .product-img{
   position: relative;
+  z-index: -1;
 }
 
 .product-img span{
@@ -240,8 +278,6 @@ code {
 
 .header-dropdown-list{
   box-sizing: border-box;
-  background-color: white;
-  border: solid 1px white;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   display: flex;
@@ -254,7 +290,11 @@ code {
 }
 
 .header-dropdown-list p{
-  border-bottom: solid 1px black;
+  background-color: white;
+  border-top: solid 1px white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom: solid 10px black;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   border-bottom-width: 1px;
@@ -328,3 +368,27 @@ input {
   text-align: center; 
 }
 
+.pages-number{
+  display: inline-block;
+}
+
+.pages-number-main{
+  display: flex;
+}
+
+.pages-number-main p{
+  line-height: 10px;
+  font-size: 20px;
+  border: solid 2px black;
+  padding: 10px;
+  border-radius: 100%;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.body-main-content{
+  height: fit-content;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}

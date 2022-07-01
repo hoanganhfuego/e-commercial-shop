@@ -17,7 +17,6 @@ export default function SeenProduct(){
             </div>
         )
     })
-    console.log(transitionLeft)
 
     function transitionLeftFn(){
         // ref.current.style.right = '-100px'

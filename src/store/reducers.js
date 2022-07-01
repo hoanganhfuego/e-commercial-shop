@@ -72,3 +72,43 @@ export const reducersProductDetail = {
         return action.payload
     }
 }
+
+export const reducersAside = {
+    changeCategory(state, action){
+        if(action.payload == 't-shirt') return {
+            allproduct: false,
+            tshirt: true,
+            short: false,
+            jean: false,
+            shirt: false,
+        }
+        if(action.payload == 'short') return {
+            allproduct: false,
+            tshirt: false,
+            short: true,
+            jean: false,
+            shirt: false,
+        }
+        if(action.payload == 'jean') return {
+            allproduct: false,
+            tshirt: false,
+            short: false,
+            jean: true,
+            shirt: false,
+        }
+        if(action.payload == 'shirt') return {
+            allproduct: false,
+            tshirt: false,
+            short: false,
+            jean: false,
+            shirt: true,
+        }
+        else return {
+            allproduct: true,
+            tshirt: false,
+            short: false,
+            jean: false,
+            shirt: false,    
+        }
+    }
+}

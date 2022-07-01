@@ -32,14 +32,16 @@ export default function ProductsCase(){
             <Header 
                 sortListRef = {sortListRef}
             />
-            <Aside
-                handleClick ={handleClick} 
-                isChoose = {categoryType.choose}
-                data = {data}
-            />
-            <Products 
-                categoryType = {categoryType.value}
-            />      
+            <div className="body-main-content">
+                <Aside
+                    handleClick ={handleClick} 
+                    isChoose = {categoryType.choose}
+                    data = {data}
+                />
+                <Products 
+                    categoryType = {categoryType.value}
+                />      
+            </div>
         </>
     )
 }

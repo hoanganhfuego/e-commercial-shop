@@ -18,7 +18,7 @@ function Product(props){
     }
    
     return(
-        <div key={id} name={name} className='product col-3'>
+        <div key={id} name={name} className='product'>
             <div className="product-img-btn">
                 <div className="product-img">
                     <span>{status}</span>

@@ -53,7 +53,7 @@ const data = [
             id: 8,
             name: "lazy2",
             price: 5000,
-            img: "https://product.hstatic.net/200000018774/product/kem_ae28bc64909145e7b7c67faec0ff13fa.jpg",
+            img: "https://product.hstatic.net/200000018774/product/15_df098a881fc14c9f9c8f25aca20c1017.jpg",
             status: "sale",
             category: "tshirt"
         },
@@ -61,7 +61,7 @@ const data = [
             id: 9,
             name: "lazy3",
             price: 5300,
-            img: "https://product.hstatic.net/200000018774/product/kem_ae28bc64909145e7b7c67faec0ff13fa.jpg",
+            img: "https://product.hstatic.net/200000018774/product/12_4c0d4b85f13e4531a5c970000201516b.jpg",
             status: "new",
             category: "tshirt"
         },
@@ -69,7 +69,7 @@ const data = [
             id: 10,
             name: "lazy4",
             price: 5000,
-            img: "https://product.hstatic.net/200000018774/product/kem_ae28bc64909145e7b7c67faec0ff13fa.jpg",
+            img: "	https://product.hstatic.net/200000018774/product/11_f1711bf1719f45eeb2b1e6b81be965d7.jpg",
             status: "sale",
             category: "tshirt"
         },
@@ -100,14 +100,14 @@ const data = [
             id: 14,
             name: "lazy7",
             price: 4800,
-            img: "https://product.hstatic.net/200000018774/product/trang_f3d984cffc1d4870af28cf5ef1d1c4b9.jpg",
+            img: "https://product.hstatic.net/200000018774/product/2_e3aa95a4e06f48e4b56f1a5c54ac2a0b.jpg",
             category: "tshirt"
         },
         {
             id: 15,
             name: "lazy7",
             price: 4800,
-            img: "https://product.hstatic.net/200000018774/product/trang_f3d984cffc1d4870af28cf5ef1d1c4b9.jpg",
+            img: "https://product.hstatic.net/200000018774/product/3_2cae00713a154595b82455335981feca.jpg",
             category: "tshirt"
         },
         {

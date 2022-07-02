@@ -3,14 +3,18 @@ import { useSelector } from "react-redux/es/exports";
 import { useEffect, useState } from "react";
 
 function Products(props){
-    const data = useSelector(state => state.dataProduct)
-    console.log(data)
-    const choosedCategory = useSelector(state => state.asideSlice)
-    const [newData, setData] = useState(data)
+    const data = useSelector(state => state.dataProduct.newValue)
+    const data1 = useSelector(state => state.dataProduct.newValue)
+    const test = data1.slice().sort(function(a, b){return a.price - b.price})
+    console.log(test)
+
+    // const choosedCategory = useSelector(state => state.asideSlice)
+    // const [newData, setData] = useState(data)
+    console.log(data1)
     const [firstProduct, setFirstProduct] = useState(0)
     const lastProduct = 6
-    const pageNumber = Math.ceil(newData.length/lastProduct)
-    const dataPerPage = newData.slice(firstProduct, lastProduct+firstProduct)
+    const pageNumber = Math.ceil(data.length/lastProduct)
+    const dataPerPage = data.slice(firstProduct, lastProduct+firstProduct)
     const [isChoose, setIsChoose] = useState([false, true, true])
     const pageNumberRender = ()=>{
         let number = []
@@ -28,23 +32,41 @@ function Products(props){
         }))
     }
 
-    useEffect(()=>{
-        if(choosedCategory.tshirt) {
-            setData(data.filter(item => item.category === 'tshirt'))
-        }
-        if(choosedCategory.short){
-            setData(data.filter(item => item.category === 'short'))
-        }
-        if(choosedCategory.jean){
-            setData(data.filter(item => item.category === 'jean'))
-        }
-        if(choosedCategory.shirt){
-            setData(data.filter(item => item.category === 'shirt'))
-        }
-        if(choosedCategory.allproduct){
-            setData(data)
-        }
-    }, [choosedCategory])
+    // function getNewData(){
+    //     if(choosedCategory.tshirt) {
+    //         setData(data.filter(item => item.category === 'tshirt'))
+    //     }
+    //     if(choosedCategory.short){
+    //         setData(data.filter(item => item.category === 'short'))
+    //     }
+    //     if(choosedCategory.jean){
+    //         setData(data.filter(item => item.category === 'jean'))
+    //     }
+    //     if(choosedCategory.shirt){
+    //         setData(data.filter(item => item.category === 'shirt'))
+    //     }
+    //     if(choosedCategory.allproduct){
+    //         setData(data)
+    //     }
+    // }
+
+    // useEffect(()=>{
+    //     if(choosedCategory.tshirt) {
+    //         setData(data.filter(item => item.category === 'tshirt'))
+    //     }
+    //     if(choosedCategory.short){
+    //         setData(data.filter(item => item.category === 'short'))
+    //     }
+    //     if(choosedCategory.jean){
+    //         setData(data.filter(item => item.category === 'jean'))
+    //     }
+    //     if(choosedCategory.shirt){
+    //         setData(data.filter(item => item.category === 'shirt'))
+    //     }
+    //     if(choosedCategory.allproduct){
+    //         setData(data)
+    //     }
+    // }, [choosedCategory])
 
     const dataProductRender = dataPerPage.map((product, index) => {
         const {id, name, price, img, status, category} = product

@@ -3,7 +3,10 @@ import { reducers } from "./reducers";
 import data from "../data";
 
 const dataSlice = createSlice({
-    initialState: data,
+    initialState: {
+        value: data,
+        newValue: data
+    },
     name :'data',
     reducers : reducers
 })

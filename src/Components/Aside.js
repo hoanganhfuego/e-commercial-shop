@@ -1,11 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import { actionAside } from "../store/asideSlice";
+import { action } from "../store/dataSlice";
 
 function Aside(){
     const dispatch = useDispatch()
     const productsCategory = useSelector(state => state.asideSlice)
     function handleChangeCategory(event){
         dispatch(actionAside.changeCategory(event.target.innerHTML))
+        dispatch(action.newData(event.target.innerHTML))
     }
 
     return(

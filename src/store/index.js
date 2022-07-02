@@ -4,6 +4,7 @@ import cartSlice from './cartSlice'
 import seenProduct from "./seenProduct";
 import { productDetail } from "./productDetail";
 import asideSlice from "./asideSlice";
+import categorySlice from "./categorySlice";
 
 const store = configureStore({
     reducer: {
@@ -11,7 +12,8 @@ const store = configureStore({
         cart: cartSlice.reducer,
         seenProduct: seenProduct.reducer,
         productDetail: productDetail.reducer,
-        asideSlice: asideSlice.reducer
+        asideSlice: asideSlice.reducer,
+        categorySlice: categorySlice.reducer
     }
 })
 export default store;

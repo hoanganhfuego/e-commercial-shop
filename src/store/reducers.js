@@ -1,19 +1,22 @@
-import data from "../data"
 export const reducers = {
+    newData(state, action){
+        if(action.payload == 'all products') return {...state, newValue: state.value}
+        if(action.payload == 't-shirt') return {...state, newValue: state.value.filter(item => item.category == 'tshirt')}
+        if(action.payload == 'short') return {...state, newValue: state.value.filter(item => item.category == 'short')}
+        if(action.payload == 'jean') return {...state, newValue: state.value.filter(item => item.category == 'jean')}
+        if(action.payload == 'shirt') return {...state, newValue: state.value.filter(item => item.category == 'shirt')}
+    },
     increase(state, action){
-        state.sort((a, b) => {
-            return (a.price - b.price)
-        })
+        console.log('xin chao')
+        return {...state, newValue: state.newValue.slice().sort((a, b) => (a.price - b.price))}
     },
     decrease(state, action){
-        state.sort((a, b) => {
-            return (b.price - a.price)
-        })
+        return {...state, newValue: state.newValue.slice().sort((a, b) => (b.price - a.price))}
     },
     onSale(state, action){
-        return state.filter(item => item.status == 'sale')
+        return {...state, newValue: state.newValue.filter(item => item.status == 'sale')}
     },
-    reset: () => data
+    reset: (state, action) => ({...state, newValue: state.value})
 }
 
 export const reducerCart = {
@@ -110,5 +113,11 @@ export const reducersAside = {
             jean: false,
             shirt: false,    
         }
+    }
+}
+
+export const categoryReducers = {
+    changeCategory(state, action){
+        return state
     }
 }

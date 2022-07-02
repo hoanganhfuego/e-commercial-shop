@@ -3,6 +3,9 @@ import { actionCart } from "../store/cartSlice";
 import { Link } from 'react-router-dom'
 
 function Navbar(){
+    function toTop(){
+        window.scroll(0,0)
+    }
     const cart = useSelector(state => state.cart.amount)
     const productInfor = useSelector(state => state.cart.productInfor)
     const priceAmount = useSelector(state => state.cart.priceAmount)
@@ -42,7 +45,7 @@ function Navbar(){
 
     return(
         <nav className="navbar">
-            <Link to='/products' style={{color:'black', textDecoration: 'none'}}><div className="navbar-shop-name cs"><strong>emas</strong></div></Link>
+            <Link to='/products' style={{color:'black', textDecoration: 'none'}}><div className="navbar-shop-name cs" onClick={toTop}><strong>emas</strong></div></Link>
             <ul className="navbar-cart-icon">
                 <i className="fa-solid fa-cart-shopping cs"><span>{cart}</span></i>
                 <div className="navbar-cart-dropdown">

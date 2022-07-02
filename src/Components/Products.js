@@ -1,21 +1,16 @@
 import Product from "./Product";
-import { useSelector } from "react-redux/es/exports";
-import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux/es/exports";
+import { actionCategory } from "../store/categorySlice";
 
 function Products(props){
     const data = useSelector(state => state.dataProduct.newValue)
-    const data1 = useSelector(state => state.dataProduct.newValue)
-    const test = data1.slice().sort(function(a, b){return a.price - b.price})
-    console.log(test)
-
-    // const choosedCategory = useSelector(state => state.asideSlice)
-    // const [newData, setData] = useState(data)
-    console.log(data1)
-    const [firstProduct, setFirstProduct] = useState(0)
+    const firstProduct = useSelector(state => state.categorySlice.value)
+    const dispatch = useDispatch()
     const lastProduct = 6
     const pageNumber = Math.ceil(data.length/lastProduct)
     const dataPerPage = data.slice(firstProduct, lastProduct+firstProduct)
-    const [isChoose, setIsChoose] = useState([false, true, true])
+    console.log(firstProduct, lastProduct+firstProduct)
+    const isChoose = useSelector(state => state.categorySlice.isChoose)
     const pageNumberRender = ()=>{
         let number = []
         for(let i=0; i<pageNumber; i++){
@@ -25,54 +20,16 @@ function Products(props){
     }
 
     function changepage(event){
-        setFirstProduct((parseInt(event.target.id)+1)*lastProduct - lastProduct)
         window.scroll(0,0)
-        setIsChoose(prev => prev.map((item, index) =>{
-            return parseInt(event.target.id)===index? false: true
-        }))
+        dispatch(actionCategory.changePageNumber(event.target.id))
+        dispatch(actionCategory.changePage(event.target.id))
     }
-
-    // function getNewData(){
-    //     if(choosedCategory.tshirt) {
-    //         setData(data.filter(item => item.category === 'tshirt'))
-    //     }
-    //     if(choosedCategory.short){
-    //         setData(data.filter(item => item.category === 'short'))
-    //     }
-    //     if(choosedCategory.jean){
-    //         setData(data.filter(item => item.category === 'jean'))
-    //     }
-    //     if(choosedCategory.shirt){
-    //         setData(data.filter(item => item.category === 'shirt'))
-    //     }
-    //     if(choosedCategory.allproduct){
-    //         setData(data)
-    //     }
-    // }
-
-    // useEffect(()=>{
-    //     if(choosedCategory.tshirt) {
-    //         setData(data.filter(item => item.category === 'tshirt'))
-    //     }
-    //     if(choosedCategory.short){
-    //         setData(data.filter(item => item.category === 'short'))
-    //     }
-    //     if(choosedCategory.jean){
-    //         setData(data.filter(item => item.category === 'jean'))
-    //     }
-    //     if(choosedCategory.shirt){
-    //         setData(data.filter(item => item.category === 'shirt'))
-    //     }
-    //     if(choosedCategory.allproduct){
-    //         setData(data)
-    //     }
-    // }, [choosedCategory])
 
     const dataProductRender = dataPerPage.map((product, index) => {
         const {id, name, price, img, status, category} = product
         if(product.category === props.categoryType) return (
-            <Product 
-                key = {id}
+            <Product
+                key = {index}
                 id = {index}
                 name = {name}
                 img = {img}
@@ -83,7 +40,7 @@ function Products(props){
         )
         else if(!props.categoryType) return (
             <Product 
-                key = {id}
+                key = {index}
                 id = {index}
                 name = {name}
                 img = {img}

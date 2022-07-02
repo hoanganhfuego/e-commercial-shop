@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { actionAside } from "../store/asideSlice";
+import { actionCategory } from "../store/categorySlice";
 import { action } from "../store/dataSlice";
 
 function Aside(){
@@ -8,6 +9,8 @@ function Aside(){
     function handleChangeCategory(event){
         dispatch(actionAside.changeCategory(event.target.innerHTML))
         dispatch(action.newData(event.target.innerHTML))
+        dispatch(actionCategory.reset())
+        dispatch(actionCategory.resetPage())
     }
 
     return(

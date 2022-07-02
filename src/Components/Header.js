@@ -14,13 +14,13 @@ export default function Headers(props){
         setSortList('HIGH TO LOW')
         dispatch(action.decrease())
     }
-    function reset(){
-        setSortList('SORT ITEMS')
-        dispatch(action.reset())
-    }
     function onSale(){
         setSortList('ON SALE')
         dispatch(action.onSale())
+    }
+    function onNew(){
+        setSortList('ON SALE')
+        dispatch(action.onNew())
     }
     return(
         <div className="header">
@@ -28,10 +28,10 @@ export default function Headers(props){
                 <div className="header-default cs tc"><p>{sortList}</p></div>
                 <div className="header-dropdown">
                     <div className="header-dropdown-list" ref={props.sortListRef}>
-                        <p className="tc select-list cs" onClick={reset}>ALL</p>
                         <p className="tc select-list cs" onClick={increase}>LOW TO HIGH</p>
                         <p className="tc select-list cs" onClick={decrease}>HIGH TO LOW</p>
                         <p className="tc select-list cs" onClick={onSale}>ON SALE</p>
+                        <p className="tc select-list cs" onClick={onNew}>NEW PRODUCTS</p>
                     </div>
                 </div>
             </div>

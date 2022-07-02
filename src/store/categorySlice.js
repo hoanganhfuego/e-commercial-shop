@@ -5,8 +5,8 @@ import { categoryReducers } from "./reducers";
 const categorySlice = createSlice({
     name:'category slice',
     initialState: {
-        value: data,
-        newData: []
+        value: 0,
+        isChoose:[false, true, true, true, true, true]
     },
     reducers: categoryReducers
 })

@@ -16,7 +16,9 @@ export const reducers = {
     onSale(state, action){
         return {...state, newValue: state.newValue.filter(item => item.status == 'sale')}
     },
-    reset: (state, action) => ({...state, newValue: state.value})
+    onNew(state, action){
+        return {...state, newValue: state.newValue.filter(item => item.status == 'new')}
+    },
 }
 
 export const reducerCart = {
@@ -117,7 +119,18 @@ export const reducersAside = {
 }
 
 export const categoryReducers = {
-    changeCategory(state, action){
-        return state
+    changePage(state, action){
+        return {...state, value:((parseInt(action.payload)+1)*6 - 6)}
+    },
+    reset(state, action){
+        return {...state, value: 0}
+    },
+    resetPage(state, action){
+        return {...state, isChoose: [false, true, true, true, true, true]}
+    },
+    changePageNumber(state, action){
+        return {...state, isChoose: state.isChoose.map((item, index) => {
+            return index == action.payload? false: true
+        })}
     }
 }

@@ -7,7 +7,6 @@ export const reducers = {
         if(action.payload == 'shirt') return {...state, newValue: state.value.filter(item => item.category == 'shirt')}
     },
     increase(state, action){
-        console.log('xin chao')
         return {...state, newValue: state.newValue.slice().sort((a, b) => (a.price - b.price))}
     },
     decrease(state, action){

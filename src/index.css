@@ -104,6 +104,12 @@ code {
   left: -100px;
 }
 
+.navbar-cart-dropdown-main{
+  overflow-y: scroll;
+  width: 320px;
+  max-height: 321px;
+}
+
 .category{
   max-width: 30%;
   margin: 0;
@@ -341,6 +347,8 @@ i span{
   background-color: white;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
   border-bottom: solid 1px black;
   width: 300px;
   display: flex;

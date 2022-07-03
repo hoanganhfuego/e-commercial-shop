@@ -7,9 +7,9 @@ export default function SeenProduct(){
     const seenProduct = useSelector(state => state.seenProduct)
     const {img, name} = seenProduct
     const [transitionLeft, setTransitionLeft] = useState(0)
-    const seenProductRender = seenProduct.map(item => {
+    const seenProductRender = seenProduct.map((item, index )=> {
         return (
-            <div className="seen-single-product">
+            <div className="seen-single-product" key={index}>
                 <img src={item.img}></img>
                 <div className="seen-single-product-content">
                     <p>{item.name}</p>

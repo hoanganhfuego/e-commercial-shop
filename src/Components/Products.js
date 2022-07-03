@@ -1,6 +1,7 @@
 import Product from "./Product";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import { actionCategory } from "../store/categorySlice";
+import { Link } from "react-router-dom";
 
 function Products(props){
     const data = useSelector(state => state.dataProduct.newValue)
@@ -9,7 +10,6 @@ function Products(props){
     const lastProduct = 6
     const pageNumber = Math.ceil(data.length/lastProduct)
     const dataPerPage = data.slice(firstProduct, lastProduct+firstProduct)
-    console.log(firstProduct, lastProduct+firstProduct)
     const isChoose = useSelector(state => state.categorySlice.isChoose)
     const pageNumberRender = ()=>{
         let number = []
@@ -30,7 +30,7 @@ function Products(props){
         if(product.category === props.categoryType) return (
             <Product
                 key = {index}
-                id = {index}
+                id = {id}
                 name = {name}
                 img = {img}
                 price = {price}
@@ -41,7 +41,7 @@ function Products(props){
         else if(!props.categoryType) return (
             <Product 
                 key = {index}
-                id = {index}
+                id = {id}
                 name = {name}
                 img = {img}
                 price = {price}

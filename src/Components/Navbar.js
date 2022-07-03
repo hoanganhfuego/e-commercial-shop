@@ -35,7 +35,7 @@ function Navbar(){
                     </div>
                     <div className="cart-amount-product">
                         <i className="fa-solid fa-circle-plus" id={index} onClick={cartIncrease}></i>
-                        <input type={'number'} value={priceAmount[index].amount} id={index} onChange={inputvalue}></input>
+                        <input type={'number'} value={priceAmount[index].amount} id={index} onChange={inputvalue} min={0}></input>
                         <i className="fa-solid fa-circle-minus" id={index} onClick={cartDecrease}></i>
                     </div>
                     <button className="delete-product" onClick={cartDelete} id={index}>delete</button>
@@ -49,7 +49,9 @@ function Navbar(){
             <ul className="navbar-cart-icon">
                 <i className="fa-solid fa-cart-shopping cs"><span>{cart}</span></i>
                 <div className="navbar-cart-dropdown">
-                    {cartProduct}
+                    <div className="navbar-cart-dropdown-main">
+                        {cartProduct}
+                    </div>
                     {priceAmount.length > 0 && <p style={{border:'solid 2px black', borderRadius:'10px', backgroundColor: 'white', textAlign:'center'}}>total price: {priceAmount.length && priceAmount.reduce((a, b)=>{
                         return a + b.price
                     }, 0)}</p>}

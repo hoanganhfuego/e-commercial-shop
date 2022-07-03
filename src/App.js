@@ -11,6 +11,7 @@ function App() {
             <Route path='/' element={<HomePage />} exact/>
             <Route path='products' element={<ProductShowCase /> } exact/>
             <Route path='productdetail' element={<ProductDetail /> } exact/>
+            <Route path='productdetail/:id' element={<ProductDetail /> } exact/>
             {/* <Route path='cart' element={<Cart />}/> */}
         </Routes>
       </div>

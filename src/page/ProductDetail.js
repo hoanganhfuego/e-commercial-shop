@@ -9,7 +9,8 @@ import './productdetail.css'
 
 export default function ProductDetail(){
     const params = useParams()
-    const data = useSelector(state => state.dataProduct.newValue)
+    const data = useSelector(state => state.dataProduct.value)
+    console.log(data)
     const dispatch = useDispatch()
     const imgRender = imgs[0].map((item, index) => {
         return (
@@ -24,7 +25,7 @@ export default function ProductDetail(){
     function addToCart(){
         dispatch(actionCart.increaseCart(data[params.id]))
     }
-    
+
     return (
         <div className="product-detail-page">
             <div className="product-detail-page-showup-content">

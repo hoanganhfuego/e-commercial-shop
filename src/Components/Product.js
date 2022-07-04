@@ -25,7 +25,7 @@ function Product(props){
                 </div>
                 <div className="product-btn row">
                     <button className="btn col-2 cs" onClick={addToCart} id={id}>add to cart</button>
-                    <Link to={`/productdetail/${id}`} style={{color:'black'}}><button className="btn2 btn col-2 cs" onClick={checkProductDetail}>more detail</button></Link>
+                    <Link to={`/productdetail/${id}/${name}`} style={{color:'black'}}><button className="btn2 btn col-2 cs" onClick={checkProductDetail}>more detail</button></Link>
                 </div>
             </div>
             <div className="product-detail tc">

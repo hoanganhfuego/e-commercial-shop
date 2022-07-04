@@ -9,9 +9,14 @@ function App() {
       <div className='App'>
         <Routes>
             <Route path='/' element={<HomePage />} exact/>
-            <Route path='products' element={<ProductShowCase /> } exact/>
-            <Route path='productdetail' element={<ProductDetail /> } exact/>
-            <Route path='productdetail/:id' element={<ProductDetail /> } exact/>
+            {/* <Route path='products/page' element={<ProductShowCase /> } exact>
+              <Route path='products/page/' element={<ProductShowCase /> } exact /> */}
+              {/* <Route path='products/*' element={<ProductShowCase /> } /> */}
+              {/* <Route path='products-page' element={<ProductShowCase /> } /> */}
+              <Route path='products' element={<ProductShowCase /> } />
+            {/* </Route> */}
+            <Route path='productdetail/' element={<ProductDetail /> } exact/>
+            <Route path='productdetail/:id/*' element={<ProductDetail /> } exact/>
             {/* <Route path='cart' element={<Cart />}/> */}
         </Routes>
       </div>

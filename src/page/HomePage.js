@@ -22,7 +22,7 @@ export default function HomePage(){
                     <div className="product-content">
                         <h3><strong>NEW COLECTION</strong></h3>
                         <h4><strong>BLAST THIS SUMMER</strong></h4>
-                        <button><Link to='/products' style={{ textDecoration: 'none', color: 'black' }}>VIEW NOW</Link></button>
+                        <button><Link to={`/products`} style={{ textDecoration: 'none', color: 'black' }}>VIEW NOW</Link></button>
                     </div>
                 </div>
                 <img src="https://www.hm.com/nt-north/uploads/2022/06/FNP-1006A-3x2-summer-stunners-1920x1280.jpg" width={'100%'}></img>

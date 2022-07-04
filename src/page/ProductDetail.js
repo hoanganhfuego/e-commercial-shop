@@ -10,7 +10,6 @@ import './productdetail.css'
 export default function ProductDetail(){
     const params = useParams()
     const data = useSelector(state => state.dataProduct.value)
-    console.log(data)
     const dispatch = useDispatch()
     const imgRender = imgs[0].map((item, index) => {
         return (

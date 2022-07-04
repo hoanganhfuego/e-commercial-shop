@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 function Products(props){
     const data = useSelector(state => state.dataProduct.newValue)
+    const data2 = useSelector(state => state.dataProduct.value)
     const firstProduct = useSelector(state => state.categorySlice.value)
     const dispatch = useDispatch()
     const lastProduct = 6

@@ -32,10 +32,19 @@
 }
 
 .product-content button{
+    cursor: pointer;
     outline: none;
     border: none;
     padding: 10px 20px;
-    font-weight: 600;
+    font-weight: 500;
+    line-height: 10px;
+    background-color: white;
+    color: black;
+}
+
+.product-content button:hover{
+    color: white;
+    background-color: black;
 }
 
 /* common */

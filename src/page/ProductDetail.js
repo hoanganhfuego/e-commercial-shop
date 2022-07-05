@@ -6,12 +6,13 @@ import SeenProduct from "../Components/SeenProduct";
 import { actionCart } from "../store/cartSlice";
 import imgs from '../imgs'
 import './productdetail.css'
+import Footer from "../Components/Footer"
 
 export default function ProductDetail(){
     const params = useParams()
     const data = useSelector(state => state.dataProduct.value)
     const dispatch = useDispatch()
-    const imgRender = imgs[0].map((item, index) => {
+    const imgRender = imgs[params.id].map((item, index) => {
         return (
             <img src={item} key={index}></img>
         )
@@ -59,6 +60,7 @@ export default function ProductDetail(){
                     </div>
                 </div>
                 <SeenProduct />
+                <Footer />
             </div>
         </div>
     )

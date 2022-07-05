@@ -1,5 +1,7 @@
 import Navbar from "../Components/Navbar";
-import ProductsCase from "./ProductsCase";
+import Aside from "../Components/Aside";
+import Products from "../Components/Products";
+import Header from "../Components/Header";
 import SeenProduct from "../Components/SeenProduct";
 import { useEffect } from "react";
 
@@ -10,7 +12,11 @@ export default function ProductShowCase(){
     return (
         <div className="main-body">
             <Navbar />
-            <ProductsCase />
+            <Header/>
+            <div className="body-main-content">
+                <Aside/>
+                <Products />      
+            </div>
             <SeenProduct />
         </div>
     );

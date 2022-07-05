@@ -1,11 +1,18 @@
 import {Link} from "react-router-dom";
 import './homepage.css'
 import { useEffect } from "react";
+import Footer from "../Components/Footer";
+import { actionAside } from "../store/asideSlice";
+import { actionCategory } from "../store/categorySlice";
+import { action } from "../store/dataSlice";
+import { useDispatch } from "react-redux";
 
 export default function HomePage(){
+    const dispatch = useDispatch()
     useEffect(()=>{
         window.scroll(0,0)
     },[])
+
     return(
         <div className="homepage">
             <div className="homepage-navbar">
@@ -22,7 +29,7 @@ export default function HomePage(){
                     <div className="product-content">
                         <h3><strong>NEW COLECTION</strong></h3>
                         <h4><strong>BLAST THIS SUMMER</strong></h4>
-                        <button><Link to={`/products`} style={{ textDecoration: 'none', color: 'black' }}>VIEW NOW</Link></button>
+                        <Link to={`/products`} style={{ textDecoration: 'none', color: 'black' }}><button value=''>VIEW NOW</button></Link>
                     </div>
                 </div>
                 <img src="https://www.hm.com/nt-north/uploads/2022/06/FNP-1006A-3x2-summer-stunners-1920x1280.jpg" width={'100%'}></img>
@@ -32,7 +39,7 @@ export default function HomePage(){
                     <div className="product-content">
                         <h3><strong>NEW T-SHIRT COLECTION</strong></h3>
                         <h4><strong>BLAST THIS SUMMER</strong></h4>
-                        <button><Link to='/products' style={{ textDecoration: 'none', color: 'black' }}>VIEW NOW</Link></button>
+                        <Link to={`/products`} style={{ textDecoration: 'none', color: 'black' }}><button value='t-shirt'>VIEW NOW</button></Link>
                     </div>
                 </div>
                 <img src="https://www.hm.com/nt-north/uploads/2022/06/5026F-3x2-1-1920x1280.jpg" width={'100%'}></img>
@@ -40,9 +47,9 @@ export default function HomePage(){
             <div className="row-homepage">
                 <div className="test">
                     <div className="product-content" >
-                        <h3><strong>NEW SHIRT COLECTION</strong></h3>
+                        <h3><strong>NEW SHORT COLECTION</strong></h3>
                         <h4><strong>BLAST THIS SUMMER</strong></h4>
-                        <button><Link to='/products' style={{ textDecoration: 'none', color: 'black' }}>VIEW NOW</Link></button>
+                        <Link to={`/products`} style={{ textDecoration: 'none', color: 'black' }}><button value='short'>VIEW NOW</button></Link>
                     </div>
                 </div>
                     <img src="https://www.hm.com/nt-north/uploads/2022/06/4076A-3x2-paw-patrol-1920x1280.jpg" width={'100%'}></img>
@@ -50,38 +57,24 @@ export default function HomePage(){
             <div className="row-homepage">
                 <div className="test">
                     <div className="product-content" >
-                        <h3><strong>NEW SHORT COLECTION</strong></h3>
+                        <h3><strong>NEW JEAN COLECTION</strong></h3>
                         <h4><strong>BLAST THIS SUMMER</strong></h4>
-                        <button><Link to='/products' style={{ textDecoration: 'none', color: 'black' }}>VIEW NOW</Link></button>
+                        <Link to={`/products`} style={{ textDecoration: 'none', color: 'black' }}><button value='jean'>VIEW NOW</button></Link>
                     </div>
                 </div>
                 <img src="https://www.hm.com/nt-north/uploads/2022/06/4115C-3x2-making-a-splash-1920x1280.jpg" width={'100%'}></img>
             </div>
-            <div className="homepage-footer">
-                <div className="homepage-footer-main">
-                    <div className="homepage-footer-infor">
-                        <p><strong>Coporate infor</strong></p>
-                        <ul>
-                            <li>Career at H&amp;M</li>
-                            <li>About H&amp;M Group</li>
-                            <li>Sustainability</li>
-                            <li>Press</li>
-                            <li>Investor Relations</li>
-                            <li>Corporate Governance</li>
-                        </ul>
-                    </div>
-                    <div className="hoempage-footer-help">
-                        <p><strong>Help</strong></p>
-                        <ul>
-                            <li>Customer Service</li>
-                            <li>Privacy Notice</li>
-                            <li>Enable high contrast mode</li>
-                        </ul>
+            <div className="row-homepage">
+                <div className="test">  
+                    <div className="product-content" >
+                        <h3><strong>NEW SHIRT COLECTION</strong></h3>
+                        <h4><strong>BLAST THIS SUMMER</strong></h4>
+                        <Link to={`/products`} style={{ textDecoration: 'none', color: 'black' }}><button value='shirt'>VIEW NOW</button></Link>
                     </div>
                 </div>
-                <p style={{marginTop: '50px'}}>H&amp;M’s business concept is to offer fashion and quality at the best price in a sustainable way.</p>
-                <p> H&amp;M has since it was founded in 1947 grown into one of the world’s leading fashion companies. The content of this site is copyright-protected and is the property of H&amp;M Hennes &amp; Mauritz AB.</p>
+                <img src="https://www.hm.com/nt-north/uploads/2022/06/FNP-5115A-3x2-2-smiley-collection-1920x1280.jpg" width={'100%'}></img>
             </div>
+            <Footer />
         </div>
     )
 }

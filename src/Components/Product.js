@@ -29,7 +29,7 @@ function Product(props){
                 </div>
             </div>
             <div className="product-detail tc">
-                <h2>{category}</h2>
+                <h2>{name}</h2>
                 <h3>{price}</h3>
             </div>
         </div>

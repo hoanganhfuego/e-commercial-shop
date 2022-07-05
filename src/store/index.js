@@ -13,7 +13,7 @@ const store = configureStore({
         seenProduct: seenProduct.reducer,
         productDetail: productDetail.reducer,
         asideSlice: asideSlice.reducer,
-        categorySlice: categorySlice.reducer
+        categorySlice: categorySlice.reducer,
     }
 })
 export default store;

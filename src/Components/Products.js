@@ -1,13 +1,12 @@
 import Product from "./Product";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import { actionCategory } from "../store/categorySlice";
-import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-function Products(props){
+function Products(){
     const data = useSelector(state => state.dataProduct.newValue)
-    const data2 = useSelector(state => state.dataProduct.value)
-    const firstProduct = useSelector(state => state.categorySlice.value)
     const dispatch = useDispatch()
+    const firstProduct = useSelector(state => state.categorySlice.value)
     const lastProduct = 6
     const pageNumber = Math.ceil(data.length/lastProduct)
     const dataPerPage = data.slice(firstProduct, lastProduct+firstProduct)
@@ -26,21 +25,12 @@ function Products(props){
         dispatch(actionCategory.changePage(event.target.id))
     }
 
+    console.log(data)
+
     const dataProductRender = dataPerPage.map((product, index) => {
         const {id, name, price, img, status, category} = product
-        if(product.category === props.categoryType) return (
+        return (
             <Product
-                key = {index}
-                id = {id}
-                name = {name}
-                img = {img}
-                price = {price}
-                status = {status}
-                category = {category}
-            />
-        )
-        else if(!props.categoryType) return (
-            <Product 
                 key = {index}
                 id = {id}
                 name = {name}
@@ -66,7 +56,7 @@ function Products(props){
                         ))}
                     </div>
                 </div>
-            </div>
+            </div>  
         </div>
     )
 }

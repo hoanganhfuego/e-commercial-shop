@@ -23,6 +23,11 @@ code {
 }
 
 /* common */
+a{
+  color: black;
+  text-decoration: none;
+}
+
 .cs{
   cursor: pointer;
 }
@@ -113,6 +118,11 @@ code {
 .category{
   max-width: 30%;
   margin: 0;
+}
+
+.category a{
+  text-decoration: none;
+  color: black;
 }
 
 .products{

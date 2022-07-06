@@ -1,31 +1,91 @@
 import Product from "./Product";
-import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux/es/exports";
+import { useParams, Route, Routes, useSearchParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux/es/exports";
+import { actionCategory } from "../store/categorySlice";
+import Page from "./Page";
 
 export default function ProductRender(){
-    // const data = useSelector(state => state.dataProduct.value)
-    // const params = useParams()
-    // const firstProduct = params.type - 1
-    // const lastProduct = 6
-    // const dataPerPage = data.slice(firstProduct, lastProduct+firstProduct)
+    const dispatch = useDispatch()
+    const params = useParams()
+    const data = useSelector(state => state.dataProduct.newValue)
+    const newData = ()=>{
+        if(params.type != 'all-collection') return data.filter(product => product.category == params.type)
+        else return data
+    }
+    const [firstProduct, setFirstProduct] = useSearchParams()
+    console.log(firstProduct.get('page'))
+    const productAmout = 6
+    const firstValue = ()=>{
+        if(firstProduct.get('page')) return (firstProduct.get('page'))*productAmout
+        else return 0
+    }
+    const pageNumber = Math.ceil(newData().length/productAmout)
+    const dataPerPage = newData().slice(firstValue(), productAmout+firstValue())
+    const isChoose = useSelector(state => state.categorySlice.isChoose)
+    const pageNumberRender = ()=>{
+        let number = []
+        for(let i=0; i<pageNumber; i++){
+            number = [...number, i]
+        }
+        return number
+    }
 
-    // const dataProductRender = data.map((product, index) => {
-    //     const {id, name, price, img, status, category} = product
-    //     if(params.type == category){
-    //         return (
-    //             <Product
-    //                 key = {index}
-    //                 id = {id}
-    //                 name = {name}
-    //                 img = {img}
-    //                 price = {price}
-    //                 status = {status}
-    //                 category = {category}
-    //             />
-    //         )
-    //     }
-    // })
+    function changepage(event){
+        window.scroll(0,0)
+        dispatch(actionCategory.changePageNumber(event.target.id))
+        // dispatch(actionCategory.changePage(event.target.id))
+        setFirstProduct({page: parseInt(event.target.id)})
+    }
+
+    const dataToRender = dataPerPage.map((product, index) => {
+        const {id, name, price, img, status, category} = product
+            return (
+                <Product
+                    key = {index}
+                    id = {id}
+                    name = {name}
+                    img = {img}
+                    price = {price}
+                    status = {status}
+                    category = {category}
+                />
+            )
+        }
+    )
+
+    const dataToRenderAll = data.map((product, index) => {
+        const {id, name, price, img, status, category} = product
+            return (
+                <Product
+                    key = {index}
+                    id = {id}
+                    name = {name}
+                    img = {img}
+                    price = {price}
+                    status = {status}
+                    category = {category}
+                />
+            )
+        }
+    )
+
     return (
-        <h1>xin chao</h1>
+        <div className="products">
+            <div className="products-main">
+                <div className="products-main-child">
+                    {dataToRender.length? dataToRender: dataToRenderAll}
+                </div>
+                <div className="pages-number">
+                    <div className="pages-number-main">
+                        {pageNumberRender().map((item, index) => (
+                            <p onClick={changepage} id={index} key={index} style={!isChoose[index]?{backgroundColor:'black', color:'white'}: {backgroundColor:'white', color:'black'}} >{item+1}</p>
+                        ))}
+                    </div>
+                </div>
+            </div>  
+            <Routes>
+                <Route path=":page" element={<Page /> } exact></Route>
+            </Routes>
+        </div>
     )
 }

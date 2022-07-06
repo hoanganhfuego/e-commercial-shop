@@ -4,6 +4,8 @@ import Products from "../Components/Products";
 import Header from "../Components/Header";
 import SeenProduct from "../Components/SeenProduct";
 import { useEffect } from "react";
+import { Route, Routes } from "react-router-dom";
+import ProductRender from "../Components/ProductRender";
 
 export default function ProductShowCase(){
     useEffect(()=>{
@@ -15,7 +17,10 @@ export default function ProductShowCase(){
             <Header/>
             <div className="body-main-content">
                 <Aside/>
-                <Products />      
+                <Routes>
+                    <Route path="*" element={<Products />}></Route>
+                    <Route path=":type/*" element={<ProductRender />} exact/>
+                </Routes>
             </div>
             <SeenProduct />
         </div>

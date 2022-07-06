@@ -7,16 +7,16 @@ export const reducers = {
         if(action.payload == 'shirt') return {...state, newValue: state.value.filter(item => item.category == 'shirt')}
     },
     increase(state, action){
-        return {...state, newValue: state.newValue.slice().sort((a, b) => (a.price - b.price))}
+        return {...state, newValue: state.value.slice().sort((a, b) => (a.price - b.price))}
     },
     decrease(state, action){
-        return {...state, newValue: state.newValue.slice().sort((a, b) => (b.price - a.price))}
+        return {...state, newValue: state.value.slice().sort((a, b) => (b.price - a.price))}
     },
     onSale(state, action){
-        return {...state, newValue: state.newValue.filter(item => item.status == 'sale')}
+        return {...state, newValue: state.value.filter(item => item.status == 'sale')}
     },
     onNew(state, action){
-        return {...state, newValue: state.newValue.filter(item => item.status == 'new')}
+        return {...state, newValue: state.value.filter(item => item.status == 'new')}
     },
 }
 

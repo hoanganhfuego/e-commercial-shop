@@ -89,11 +89,18 @@
 }
 
 .homepage-navbar-menu{
+    display: flex;
+    align-items: center;
     margin-top: auto;
     margin-bottom: auto;
 }
 
+.homepage-navbar-menu p{
+    margin-left: 10px;
+}
+
 .homepage-footer{
+    margin-top: 20px;
     background-color: #E4E4E4;
     width: 100%;
     display: flex;
@@ -131,4 +138,52 @@
 
 .homepage-footer-main p{
     text-align: left;
+}
+
+
+@media only screen and (max-width: 812px){
+    .homepage-navbar-logo{
+        font-size: 40px;
+    }
+    .homepage-navbar ul{
+        display: none;
+    }
+    .homepage-navbar-menu p{
+        display: none;
+    }
+    .homepage{
+        width: 93%;
+    }
+    .product-content{
+        top: 0;
+        margin-top: 100px;
+    }
+    .product-content h3{
+        font-size: 20px;
+    }
+    .product-content h4{
+        font-size: 10px;
+    }
+    .product-content button{
+        padding: 5px 10px;
+        font-weight: 400;
+        font-size: 10px;
+    }
+    .homepage-footer-main{
+        box-sizing: border-box;
+        width: inherit;
+        padding: 0 10px;
+    }
+    .homepage-footer-infor{
+        text-align: center;
+    }
+    .homepage-footer-infor p{
+        text-align: center;
+    }
+    .homepage-footer-help{
+        text-align: center;
+    }
+    .homepage-footer-help p{
+        text-align: center;
+    }
 }

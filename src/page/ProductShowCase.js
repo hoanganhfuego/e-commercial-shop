@@ -6,6 +6,7 @@ import SeenProduct from "../Components/SeenProduct";
 import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import ProductRender from "../Components/ProductRender";
+import Footer from "../Components/Footer";
 
 export default function ProductShowCase(){
     useEffect(()=>{
@@ -23,6 +24,7 @@ export default function ProductShowCase(){
                 </Routes>
             </div>
             <SeenProduct />
+            <Footer />
         </div>
     );
 }

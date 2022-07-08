@@ -13,7 +13,7 @@ export default function Footer(){
                             <li>Corporate Governance</li>
                         </ul>
                     </div>
-                    <div className="hoempage-footer-help">
+                    <div className="homepage-footer-help">
                         <p><strong>Help</strong></p>
                         <ul>
                             <li>Customer Service</li>

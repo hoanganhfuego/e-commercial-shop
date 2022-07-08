@@ -1,4 +1,5 @@
 .product-detail-page{
+    box-sizing: border-box;
     width: 1380px;
     padding: 0 10px;
 }
@@ -20,12 +21,12 @@
     cursor: pointer;
     width: 120px;
     height: 160px;
-    border: solid 1px black;
+    border: solid 1px white;
     margin-bottom: 20px;
 }
 
 .product-detail-images img:hover{
-    border: solid 1px white;
+    border: solid 1px black;
 }
 
 .product-detail-page-infor-cover {
@@ -88,18 +89,83 @@
 
 .product-detail-page-showup-content{
     display: none;
-    position: absolute;
-    z-index: 10;
-    top: 0;
-    width: inherit;
-    height: 100%;
-    background-color: black;
 }
 
-.product-detail-page-showup-content img{
-    width: 30%;
-}
-/* 
 .product-detail-page-main-content{
+    margin-top: 90px;
+}
+.product-detail-btn-cover{
     display: none;
-} */
+}
+
+@media only screen and (max-width: 812px){
+    .product-detail-page{
+        width: inherit;
+    }
+    .product-detail-page-cover{
+        width: inherit;
+    }
+    .product-detail-page-cover-1{
+        width: 100%;
+    }
+    .product-detail-page-cover-2-img{
+        flex-direction: column-reverse;
+    }
+    .product-detail-images{
+        flex-direction: row;
+        justify-content: center;
+    }
+    .product-detail-images img{
+        width: 60px;
+        height: 80px;
+    }
+    .product-detail-page-main{
+        width: inherit;
+        margin-bottom: 10px;
+    }
+    .product-detail-page-main{
+        display: flex;
+        justify-content: center;
+    }
+    .product-detail-page-main img{
+        width: 200px;
+    }
+    .product-detail-size{
+        display: flex;
+        justify-content: center;
+    }
+    .product-detail-size img{
+        width: 338px;
+    }
+    .product-detail-page-infor-cover{
+        display: none;
+    }
+    .product-detail-btn-cover{
+        background-color: white;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        width: inherit;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .detail-col-3{
+        box-sizing: border-box;
+        width: 100%;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        border: solid 2px black;
+        transition: background-color 500ms;
+    }
+    .detail-col-3:hover{
+        color: white;
+        background-color: black;
+    }
+    .detail-add-btn{
+        color: black;
+    }
+}

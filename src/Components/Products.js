@@ -10,7 +10,7 @@ function Products(){
     const [firstProduct, setFirstProduct] = useSearchParams()
     const productAmout = 6
     const firstValue = ()=>{
-        if(firstProduct.get('page')) return (firstProduct.get('page'))*productAmout
+        if(firstProduct.get('page')) return ((firstProduct.get('page'))-1)*productAmout
         else return 0
     }
     const pageNumber = Math.ceil(data.length/productAmout)
@@ -28,7 +28,7 @@ function Products(){
         window.scroll(0,0)
         dispatch(actionCategory.changePageNumber(event.target.id))
         // dispatch(actionCategory.changePage(event.target.id))
-        setFirstProduct({page: parseInt(event.target.id)})
+        setFirstProduct({page: parseInt(event.target.id)+1})
     }
 
     const dataProductRender = dataPerPage.map((product, index) => {
@@ -59,7 +59,7 @@ function Products(){
                 <div className="pages-number">
                     <div className="pages-number-main">
                         {pageNumberRender().map((item, index) => (
-                            <p onClick={changepage} id={index} key={index} style={!isChoose[index]?{backgroundColor:'black', color:'white'}: {backgroundColor:'white', color:'black'}} >{item+1}</p>
+                            <p onClick={changepage} id={index} key={index} style={firstProduct.get('page')==index+1?{backgroundColor:'black', color:'white'}: {backgroundColor:'white', color:'black'}} >{item+1}</p>
                         ))}
                     </div>
                 </div>

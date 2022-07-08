@@ -1,15 +1,19 @@
-import { useSelector, useDispatch } from "react-redux/es/exports";
+import { useDispatch, useSelector } from "react-redux";
 import { actionCart } from "../store/cartSlice";
 import { Link } from 'react-router-dom'
+import { actionCategory } from "../store/categorySlice";
+import { actionAside } from "../store/asideSlice";
 
 function Navbar(){
+    const dispatch = useDispatch()
     function toTop(){
         window.scroll(0,0)
+        dispatch(actionAside.reset())
+        dispatch(actionCategory.resetPage())
     }
     const cart = useSelector(state => state.cart.amount)
     const productInfor = useSelector(state => state.cart.productInfor)
     const priceAmount = useSelector(state => state.cart.priceAmount)
-    const dispatch = useDispatch()
 
     function cartIncrease(event){
         dispatch(actionCart.cartIncrease(event.target.id))
@@ -46,7 +50,7 @@ function Navbar(){
     return(
         <nav className="navbar">
             <Link to='/products' style={{color:'black', textDecoration: 'none'}}><div className="navbar-shop-name cs" onClick={toTop}><strong>emas</strong></div></Link>
-            <ul className="navbar-cart-icon">
+            <div className="navbar-cart-icon">
                 <i className="fa-solid fa-cart-shopping cs"><span>{cart}</span></i>
                 <div className="navbar-cart-dropdown">
                     <div className="navbar-cart-dropdown-main">
@@ -56,7 +60,7 @@ function Navbar(){
                         return a + b.price
                     }, 0)}</p>}
                 </div>
-            </ul>
+            </div>
         </nav>
     )
 }

@@ -16,7 +16,7 @@ export default function HomePage(){
     return(
         <div className="homepage">
             <div className="homepage-navbar">
-                <div className="homepage-navbar-menu"><i className="fa-solid fa-bars"></i> About us</div>
+                <div className="homepage-navbar-menu"><i className="fa-solid fa-bars"></i><p>About us</p></div>
                 <div className="homepage-navbar-logo"><strong>EMAS</strong></div>
                 <ul>
                     <li>Location</li>

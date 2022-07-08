@@ -26,7 +26,8 @@ export const reducerCart = {
         {...state}:
         {...state,
         productADD: true, 
-        amount: state.amount+1, productID: [...state.productID, action.payload.id], 
+        amount: state.amount+1,
+        productID: [...state.productID, action.payload.id], 
         productInfor:[...state.productInfor, action.payload], 
         priceAmount:[...state.priceAmount, {price: action.payload.price, amount: 1, id:action.payload.id}]})
     },
@@ -49,7 +50,9 @@ export const reducerCart = {
             action.payload != index
         ), productInfor: state.productInfor.filter((item, index)=>
             action.payload != index
-        ), amount: state.amount -1}
+        ), amount: state.amount -1,
+        productID: state.productID.filter(item => item != action.payload)
+        }
     },
     amountChange(state, action){
         return{...state, priceAmount: 
@@ -114,6 +117,15 @@ export const reducersAside = {
             jean: false,
             shirt: false,    
         }
+    },
+    reset(state, action){
+        return{ 
+            allproduct: true,
+            tshirt: false,
+            short: false,
+            jean: false,
+            shirt: false,
+        }   
     }
 }
 

@@ -1,10 +1,11 @@
 import { useState } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { action } from "../store/dataSlice"
 import { actionCategory } from "../store/categorySlice";
 
 export default function Headers(props){
-    const [sortList, setSortList] = useState('ALL PRODUCT')
+    const category = useSelector(state => state.asideSlice)
+    const [sortList, setSortList] = useState('PRODUCT FILTER')
 
     const dispatch = useDispatch()
     function increase(){
@@ -19,14 +20,14 @@ export default function Headers(props){
         dispatch(actionCategory.resetPage())
         dispatch(actionCategory.reset())
     }
-    function onSale(){
+    function onSale(category){
         setSortList('ON SALE')
         dispatch(action.onSale())
         dispatch(actionCategory.resetPage())
         dispatch(actionCategory.reset())
     }
-    function onNew(){
-        setSortList('ON SALE')
+    function onNew(category){
+        setSortList('NEW STUFF')
         dispatch(action.onNew())
         dispatch(actionCategory.resetPage())
         dispatch(actionCategory.reset())
@@ -40,7 +41,7 @@ export default function Headers(props){
                         <p className="tc select-list cs" onClick={increase}>LOW TO HIGH</p>
                         <p className="tc select-list cs" onClick={decrease}>HIGH TO LOW</p>
                         <p className="tc select-list cs" onClick={onSale}>ON SALE</p>
-                        <p className="tc select-list cs" onClick={onNew}>NEW PRODUCTS</p>
+                        <p className="tc select-list cs" onClick={onNew}>NEW STUFF</p>
                     </div>
                 </div>
             </div>

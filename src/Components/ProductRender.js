@@ -3,6 +3,7 @@ import { useParams, Route, Routes, useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import { actionCategory } from "../store/categorySlice";
 import Page from "./Page";
+import Footer from "./Footer";
 
 export default function ProductRender(){
     const dispatch = useDispatch()
@@ -16,7 +17,7 @@ export default function ProductRender(){
     console.log(firstProduct.get('page'))
     const productAmout = 6
     const firstValue = ()=>{
-        if(firstProduct.get('page')) return (firstProduct.get('page'))*productAmout
+        if(firstProduct.get('page')) return (firstProduct.get('page')-1)*productAmout
         else return 0
     }
     const pageNumber = Math.ceil(newData().length/productAmout)
@@ -34,7 +35,7 @@ export default function ProductRender(){
         window.scroll(0,0)
         dispatch(actionCategory.changePageNumber(event.target.id))
         // dispatch(actionCategory.changePage(event.target.id))
-        setFirstProduct({page: parseInt(event.target.id)})
+        setFirstProduct({page: parseInt(event.target.id)+1})
     }
 
     const dataToRender = dataPerPage.map((product, index) => {
@@ -78,7 +79,7 @@ export default function ProductRender(){
                 <div className="pages-number">
                     <div className="pages-number-main">
                         {pageNumberRender().map((item, index) => (
-                            <p onClick={changepage} id={index} key={index} style={!isChoose[index]?{backgroundColor:'black', color:'white'}: {backgroundColor:'white', color:'black'}} >{item+1}</p>
+                            <p onClick={changepage} id={index} key={index} style={firstProduct.get('page') == index+1?{backgroundColor:'black', color:'white'}: {backgroundColor:'white', color:'black'}} >{item+1}</p>
                         ))}
                     </div>
                 </div>

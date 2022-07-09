@@ -59,7 +59,9 @@ function Products(){
                 <div className="pages-number">
                     <div className="pages-number-main">
                         {pageNumberRender().map((item, index) => (
-                            <p onClick={changepage} id={index} key={index} style={firstProduct.get('page')==index+1?{backgroundColor:'black', color:'white'}: {backgroundColor:'white', color:'black'}} >{item+1}</p>
+                            <p onClick={changepage} id={index} key={index} style={firstProduct.get('page')==index+1?{backgroundColor:'black', color:'white'}: {backgroundColor:'white', color:'black'}} >
+                                {item+1}
+                            </p>
                         ))}
                     </div>
                 </div>

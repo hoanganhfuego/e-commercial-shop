@@ -28,7 +28,7 @@ export const reducerCart = {
         productADD: true, 
         amount: state.amount+1,
         productID: [...state.productID, action.payload.id], 
-        productInfor:[...state.productInfor, action.payload], 
+        productInfor:[ action.payload,...state.productInfor], 
         priceAmount:[...state.priceAmount, {price: action.payload.price, amount: 1, id:action.payload.id}]})
     },
     cartIncrease(state, action){

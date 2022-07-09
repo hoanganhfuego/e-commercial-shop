@@ -1,0 +1,115 @@
+.navbar-slice{
+    z-index: 0;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    left: -10000px;
+    /* background-color: black;
+    opacity: 0.5; */
+    background: rgba(0,0,0,0.5);
+    /* transition: left 500ms; */
+}
+
+.navbar-slice-main{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.navbar-slice-cart{
+    position: relative;
+    overflow-y: scroll;
+    border: solid 1px black;
+    border-left: none;
+    z-index: 1000;
+    position: absolute;
+    float: right;
+    background-color: white;
+    width: 30%;
+    height: 100%;
+    right: -1000px;
+    transition: right 500ms;
+}
+.total-price{
+    position: fixed;
+    bottom: 20px;
+    width: 377px;
+    height: 100px;
+    margin-left: 10px;
+}
+.total-price div{
+    width: 100%;
+    height: 100px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar-cart-icon{
+    float: right;
+    font-size: 50px;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-cart-icon:hover .navbar-cart-dropdown{
+  display: block;
+}
+
+.navbar-cart-icon i{
+  position: relative;
+}
+
+.cart-amount-product-icon{
+    margin-right: 1px;
+    cursor: pointer;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid 2px black;
+    height: 30px;
+    width: 30px;
+}
+.cart-amount-product-icon:hover{
+    background-color: black;
+    color: white;
+}
+.cart-amount-product-icon i{
+    font-size: 20px;
+}
+
+.delete-product{
+    cursor: pointer;
+    background-color: white;
+    text-transform: uppercase;
+    height: 34px;
+}
+
+.delete-product:hover{
+    background-color: black;
+    color: white;
+}
+
+.navbar-slice-cart-close{
+    position: absolute;
+    top: 1%;
+    right: -40px;
+    font-size: 25px;
+    color: white;
+    border: solid 2px black;
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
+
+@media only screen and (max-width: 812px){
+    .navbar-slice-cart{
+        width: 100%;
+    }
+}

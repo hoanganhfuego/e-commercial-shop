@@ -56,6 +56,135 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+}
+
+.homepage-cover{
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.pop-up-contact{
+    box-sizing: border-box;
+    padding: 20px 0;
+    text-align: left;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.pop-up-contact p{
+    margin: 0;
+}
+
+.pop-up-contact p:nth-child(1){
+    color: red;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.pop-up-contact p:nth-child(2){
+    font-weight: bold;
+}
+
+.pop-up-contact p:nth-child(5){
+    text-decoration: underline;
+    margin-top: 30px;
+}
+
+.pop-up-contact p:nth-child(6){
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.pop-up-contact p:nth-child(12){
+    margin-top: 10px;
+}
+
+.pop-up-location-main{
+    display: flex;
+    justify-content: space-between;
+}
+
+.pop-up-location p:first-child{
+    font-size: 26px;
+}
+
+.location{
+    width: 200px;
+}
+
+.location p:nth-child(1){
+    color: red;
+}
+
+.pop-up-service p:first-child{
+    font-size: 26px;
+    color: red;
+    font-weight: bold;
+}
+.pop-up-service{
+    float: left;
+    text-align: left;
+}
+.homepage-pop-up{
+    z-index: 1;
+    position: fixed;
+    top: 90px;
+    width: inherit;
+    height: 100vh;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.homepage-pop-up-main-content{
+    z-index: 1;
+    top: 0;
+    width: 80%;
+    height: 70%;
+    color: black;
+    background-color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.homepage-pop-up-main-content-img{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40%;
+    background-image: url(https://hmgroup.com/wp-content/uploads/2020/03/cq5dam.web_.2400.720.5.jpeg);
+}
+
+.homepage-pop-up-main-content-img h1{
+    margin: 0;
+    color: white;
+    font-size: 40px;
+}
+
+.homepage-pop-up-main-content-context{
+    width: 50%;
+}
+
+.homepage-pop-up-main-content-imgs{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: inherit;
+}
+
+.homepage-pop-up-main-content-imgs img{
+    width: 360px;
+    height: 200px;
 }
 
 .homepage-navbar{
@@ -76,19 +205,21 @@
 }
 
 .homepage-navbar ul li{
+    cursor: pointer;
     list-style: none;
     float: right;
     margin-left: 15px;
 }
 
 .homepage-navbar-logo{
-    user-select: none;
+    cursor: pointer;
     text-align: center;
     font-size: 60px;
     font-weight: bold;
 }
 
 .homepage-navbar-menu{
+    cursor: pointer;
     display: flex;
     align-items: center;
     margin-top: auto;

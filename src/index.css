@@ -67,6 +67,7 @@ a{
 /* common */
 
 .App{
+  position: relative;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -92,28 +93,15 @@ a{
   height: 90px;
   font-size: 60px;
 }
-
-.navbar-cart-icon{
-  float: right;
-  position: relative;
-  font-size: 50px;
-  margin: 0;
-  padding: 0;
-}
-
-.navbar-cart-icon:hover .navbar-cart-dropdown{
-  display: block;
-}
-
 .navbar-cart-dropdown{
   position: absolute;
   left: -100px;
 }
 
 .navbar-cart-dropdown-main{
-  overflow-y: scroll;
-  width: 320px;
-  max-height: 321px;
+  box-sizing: border-box;
+  padding: 10px;
+  width: 100%;
 }
 
 .category{
@@ -334,10 +322,6 @@ a{
   height: 22px;
 }
 
-.navbar-cart-icon i{
-  position: relative;
-}
-
 i span{
   position: absolute;
   color: white;
@@ -357,19 +341,19 @@ i span{
 
 .navbar-cart-dropdown-showcase{
   background-color: white;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  border-bottom: solid 1px black;
-  width: 300px;
+  border-bottom: solid 2px black;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
 
+.navbar-cart-dropdown-showcase p{
+  font-size: 14px;
+}
+
 .navbar-cart-dropdown-showcase img{
-  width: 50px;
+  width: 18%;
 }
 
 input::-webkit-outer-spin-button,
@@ -385,7 +369,12 @@ input::-webkit-inner-spin-button {
 }
 
 .cart-amount-product input{
-  width: 20px;
+  width: 28px;
+  height: 28px;
+  user-select: none;
+  outline: none;
+  border: solid 2px black;
+  margin-right: 1px;
 }
 
 input { 

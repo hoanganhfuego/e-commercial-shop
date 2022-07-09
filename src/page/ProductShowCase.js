@@ -13,18 +13,20 @@ export default function ProductShowCase(){
         window.scroll(0,0)
     },[])
     return (
-        <div className="main-body">
-            <Navbar />
-            <Header/>
-            <div className="body-main-content">
-                <Aside/>
-                <Routes>
-                    <Route path="*" element={<Products />}></Route>
-                    <Route path=":type/*" element={<ProductRender />} exact/>
-                </Routes>
+        <>
+            <div className="main-body">
+                <Navbar />
+                <Header/>
+                <div className="body-main-content">
+                    <Aside/>
+                    <Routes>
+                        <Route path="*" element={<Products />}></Route>
+                        <Route path=":type/*" element={<ProductRender />} exact/>
+                    </Routes>
+                </div>
+                <SeenProduct />
+                <Footer />
             </div>
-            <SeenProduct />
-            <Footer />
-        </div>
+        </>
     );
 }

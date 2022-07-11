@@ -2,16 +2,24 @@ import Product from "./Product";
 import { useParams, Route, Routes, useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import { actionCategory } from "../store/categorySlice";
+import { actionAside } from "../store/asideSlice";
 import Page from "./Page";
 import Footer from "./Footer";
 
 export default function ProductRender(){
     const dispatch = useDispatch()
     const params = useParams()
+    console.log(params)
     const data = useSelector(state => state.dataProduct.newValue)
     const newData = ()=>{
-        if(params.type != 'all-collection') return data.filter(product => product.category == params.type)
-        else return data
+        if(params.type != 'all-collection'){
+            dispatch(actionAside.changeCategory(params.type))
+            return data.filter(product => product.category == params.type)
+        } 
+        else {
+            dispatch(actionAside.changeCategory(''))
+            return data
+        }
     }
     const [firstProduct, setFirstProduct] = useSearchParams()
     console.log(firstProduct.get('page'))

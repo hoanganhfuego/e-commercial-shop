@@ -132,12 +132,11 @@ export default function HomePage(){
     )
     const [popUp, setPopUp] = useState('')
     const [isChoosePop, setIsChoosePop] = useState(false)
-    console.log(isChoosePop)
 
     function handleNavbar(event){
         const navbarItem = event.target.innerHTML
         setIsChoosePop(true)
-        if(navbarItem == 'About us')setPopUp(about)
+        if(navbarItem == 'About us' || navbarItem == '') setPopUp(about)
         if(navbarItem == 'Location')setPopUp(location)
         if(navbarItem == 'Contact')setPopUp(contact)
         if(navbarItem == 'Service')setPopUp(service)
@@ -152,8 +151,16 @@ export default function HomePage(){
                 </div>
                 <div className="homepage-cover" onClick={()=>setIsChoosePop(false)}></div>
             </div>}
+            <div className="homepage-pop-up-mobile" style={isChoosePop?{left:'0'}:{}}>
+                <div>
+                    <Link to={`/`}><p>Home</p></Link>
+                    <Link to={`/products`}><p>Collection</p></Link>
+                </div>
+                <div className="homepage-pop-up-mobile-cover" onClick={()=>{setIsChoosePop(false)}}>
+                </div>
+            </div>
             <div className="homepage-navbar">
-                <div className="homepage-navbar-menu"  onClick={handleNavbar}>
+                <div className="homepage-navbar-menu" onClick={handleNavbar}>
                     <i className="fa-solid fa-bars"></i>
                     <p>About us</p>
                 </div>
@@ -181,7 +188,7 @@ export default function HomePage(){
                     <div className="product-content">
                         <h3><strong>NEW T-SHIRT COLECTION</strong></h3>
                         <h4><strong>BLAST THIS SUMMER</strong></h4>
-                        <Link to={`/products`} style={{ textDecoration: 'none', color: 'black' }}><button value='t-shirt'>VIEW NOW</button></Link>
+                        <Link to={`/products/tshirt`} style={{ textDecoration: 'none', color: 'black' }}><button value='t-shirt'>VIEW NOW</button></Link>
                     </div>
                 </div>
                 <img src="https://www.hm.com/nt-north/uploads/2022/06/5026F-3x2-1-1920x1280.jpg" width={'100%'}></img>
@@ -191,7 +198,7 @@ export default function HomePage(){
                     <div className="product-content" >
                         <h3><strong>NEW SHORT COLECTION</strong></h3>
                         <h4><strong>BLAST THIS SUMMER</strong></h4>
-                        <Link to={`/products`} style={{ textDecoration: 'none', color: 'black' }}><button value='short'>VIEW NOW</button></Link>
+                        <Link to={`/products/short`} style={{ textDecoration: 'none', color: 'black' }}><button value='short'>VIEW NOW</button></Link>
                     </div>
                 </div>
                     <img src="https://www.hm.com/nt-north/uploads/2022/06/4076A-3x2-paw-patrol-1920x1280.jpg" width={'100%'}></img>
@@ -201,7 +208,7 @@ export default function HomePage(){
                     <div className="product-content" >
                         <h3><strong>NEW JEAN COLECTION</strong></h3>
                         <h4><strong>BLAST THIS SUMMER</strong></h4>
-                        <Link to={`/products`} style={{ textDecoration: 'none', color: 'black' }}><button value='jean'>VIEW NOW</button></Link>
+                        <Link to={`/products/jean`} style={{ textDecoration: 'none', color: 'black' }}><button value='jean'>VIEW NOW</button></Link>
                     </div>
                 </div>
                 <img src="https://www.hm.com/nt-north/uploads/2022/06/4115C-3x2-making-a-splash-1920x1280.jpg" width={'100%'}></img>
@@ -211,7 +218,7 @@ export default function HomePage(){
                     <div className="product-content" >
                         <h3><strong>NEW SHIRT COLECTION</strong></h3>
                         <h4><strong>BLAST THIS SUMMER</strong></h4>
-                        <Link to={`/products`} style={{ textDecoration: 'none', color: 'black' }}><button value='shirt'>VIEW NOW</button></Link>
+                        <Link to={`/products/shirt`} style={{ textDecoration: 'none', color: 'black' }}><button value='shirt'>VIEW NOW</button></Link>
                     </div>
                 </div>
                 <img src="https://www.hm.com/nt-north/uploads/2022/06/FNP-5115A-3x2-2-smiley-collection-1920x1280.jpg" width={'100%'}></img>

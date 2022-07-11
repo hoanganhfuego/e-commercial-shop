@@ -7,7 +7,7 @@ import Page from "./Page";
 function Products(){
     const data = useSelector(state => state.dataProduct.newValue)
     const dispatch = useDispatch()
-    const [firstProduct, setFirstProduct] = useSearchParams()
+    const [firstProduct, setFirstProduct] = useSearchParams(1)
     const productAmout = 6
     const firstValue = ()=>{
         if(firstProduct.get('page')) return ((firstProduct.get('page'))-1)*productAmout

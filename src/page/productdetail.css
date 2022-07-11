@@ -5,7 +5,7 @@
 }
 
 .product-detail-page-main img{
-    width: 80%;
+    width: 895px;
 }
 
 .product-detail-page-cover{
@@ -129,6 +129,7 @@
     }
     .product-detail-page-main img{
         width: 200px;
+        height: 300px;
     }
     .product-detail-size{
         display: flex;

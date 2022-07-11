@@ -11,17 +11,16 @@ function Product(props){
     function addToCart(){
         dispatch(actionCart.increaseCart(props))
     }
-    function checkProductDetail(){
-        dispatch(actionSeen.addToSeenProduct(props))
-        dispatch(actionProductDetail.openProductDetail(props))
+    function checkProductDetail(event){
+        if(event.target.class != 'btn col-2 cs'){ dispatch(actionSeen.addToSeenProduct(props))}
     }
    
     return(
         <div key={id} name={name} className='product'>
-                <div className="product-img-btn">
+                <div className="product-img-btn" >
                     <Link to={`/productdetail/${id}/${name}`}><div className="product-img">
                         <span>{status}</span>
-                        <img src={img}></img>
+                        <img src={img} onClick={checkProductDetail}></img>
                     </div></Link>
                     <div className="product-btn row">
                         <button className="btn col-2 cs" onClick={addToCart} id={id}>add to cart</button>

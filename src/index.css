@@ -398,6 +398,9 @@ input {
   margin-right: 10px;
   cursor: pointer;
 }
+.pages-number-main p:first-child{
+  background-color: black;
+}
 
 .body-main-content{
   height: fit-content;

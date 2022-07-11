@@ -22,13 +22,13 @@ export default function Headers(props){
     }
     function onSale(category){
         setSortList('ON SALE')
-        dispatch(action.onSale())
+        dispatch(action.onSale(category))
         dispatch(actionCategory.resetPage())
         dispatch(actionCategory.reset())
     }
     function onNew(category){
         setSortList('NEW STUFF')
-        dispatch(action.onNew())
+        dispatch(action.onNew(category))
         dispatch(actionCategory.resetPage())
         dispatch(actionCategory.reset())
     }

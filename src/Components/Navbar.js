@@ -12,8 +12,6 @@ function Navbar(){
     const productInfor = useSelector(state => state.cart.productInfor)
     const priceAmount = useSelector(state => state.cart.priceAmount)
     const [cartShow, setCartShow] = useState(false)
-    const [cartParams, setCartParams] = useSearchParams()
-    console.log(cartParams.cart)
     
     function toTop(){
         window.scroll(0,0)
@@ -22,12 +20,12 @@ function Navbar(){
     }
     function handleCart(){
         setCartShow(prev => !prev)
-        setCartParams({cart: 'open'})
     }
     function cartIncrease(event){
         dispatch(actionCart.cartIncrease(event.target.id))
     }
     function cartDecrease(event){
+        console.log('xin chao', cart)
         dispatch(actionCart.cartDecrease(event.target.id))
     }
     function cartDelete(event){
@@ -77,6 +75,9 @@ function Navbar(){
                 </div> */}
                 <div className="navbar-slice" style={cartShow?{left:'0'}:{}} >
                     <div className="navbar-slice-main">
+                        <div className="navbar-slice-cart-close" onClick={handleCart}>
+                            <i className="fa-solid fa-angles-right"></i>
+                        </div>
                         <div className="navbar-slice-cart" style={cartShow? {right:'0'} :{}}>
                             <div className="navbar-cart-dropdown-main">
                                 {cartProduct}
@@ -88,7 +89,6 @@ function Navbar(){
                                 }, 0)}</p></div> : <span>YOU HAVE NOTHING YET</span>}
                             </div>
                         </div>
-                        <div className="navbar-slice-cart-close" onClick={handleCart}><i className="fa-solid fa-x"></i></div>
                     </div>
                 </div>
             </div>

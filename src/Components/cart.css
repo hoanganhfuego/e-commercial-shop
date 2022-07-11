@@ -93,19 +93,24 @@
 }
 
 .navbar-slice-cart-close{
+    cursor: pointer;
+    z-index: 11;
     position: absolute;
-    top: 1%;
-    right: -40px;
+    top: 42%;
+    right: 420px;
     font-size: 25px;
-    color: white;
-    border: solid 2px black;
+    color: black;
     border-radius: 100%;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: black;
+    background-color: white;
+}
+
+.navbar-cart-dropdown-main{
+    overflow: visible;
 }
 
 @media only screen and (max-width: 812px){

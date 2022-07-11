@@ -1,7 +1,7 @@
 export const reducers = {
     newData(state, action){
         if(action.payload == 'all products') return {...state, newValue: state.value}
-        if(action.payload == 't-shirt') return {...state, newValue: state.value.filter(item => item.category == 'tshirt')}
+        if(action.payload == 'tshirt') return {...state, newValue: state.value.filter(item => item.category == 'tshirt')}
         if(action.payload == 'short') return {...state, newValue: state.value.filter(item => item.category == 'short')}
         if(action.payload == 'jean') return {...state, newValue: state.value.filter(item => item.category == 'jean')}
         if(action.payload == 'shirt') return {...state, newValue: state.value.filter(item => item.category == 'shirt')}
@@ -40,9 +40,13 @@ export const reducerCart = {
     },
     cartDecrease(state, action){
         return {...state, priceAmount: state.priceAmount.map((item, index)=>{
-            return action.payload == index? {
-                price: state.productInfor[index].price*(item.amount-1), amount: item.amount-1
-            }:{...item}
+            if(item.amount !=1)
+            {
+                return action.payload == index? {
+                    price: state.productInfor[index].price*(item.amount-1), amount: item.amount-1
+                }:{...item}
+            }
+            else return item
         })}
     },
     cartDelete(state, action){
@@ -82,7 +86,7 @@ export const reducersProductDetail = {
 
 export const reducersAside = {
     changeCategory(state, action){
-        if(action.payload == 't-shirt') return {
+        if(action.payload == 'tshirt') return {
             allproduct: false,
             tshirt: true,
             short: false,

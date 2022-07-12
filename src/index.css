@@ -400,6 +400,7 @@ input {
 }
 .pages-number-main p:first-child{
   background-color: black;
+  color: white;
 }
 
 .body-main-content{

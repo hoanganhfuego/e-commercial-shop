@@ -1,28 +1,25 @@
 import Product from "./Product";
 import { useParams, Route, Routes, useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux/es/exports";
-import { actionCategory } from "../store/categorySlice";
-import { actionAside } from "../store/asideSlice";
 import Page from "./Page";
-import Footer from "./Footer";
 
 export default function ProductRender(){
     const dispatch = useDispatch()
+    const inputData = useSelector(state => state.dataProduct.inputValue)
+    console.log(inputData, 'input')
     const params = useParams()
-    console.log(params)
     const data = useSelector(state => state.dataProduct.newValue)
     const newData = ()=>{
-        if(params.type != 'all-collection'){
-            dispatch(actionAside.changeCategory(params.type))
+        if(inputData.length) return inputData
+        else if(params.type != 'all-collection'){
             return data.filter(product => product.category == params.type)
         } 
         else {
-            dispatch(actionAside.changeCategory(''))
             return data
         }
     }
+    console.log(newData(), 'newdata')
     const [firstProduct, setFirstProduct] = useSearchParams()
-    console.log(firstProduct.get('page'))
     const productAmout = 6
     const firstValue = ()=>{
         if(firstProduct.get('page')) return (firstProduct.get('page')-1)*productAmout
@@ -30,7 +27,6 @@ export default function ProductRender(){
     }
     const pageNumber = Math.ceil(newData().length/productAmout)
     const dataPerPage = newData().slice(firstValue(), productAmout+firstValue())
-    const isChoose = useSelector(state => state.categorySlice.isChoose)
     const pageNumberRender = ()=>{
         let number = []
         for(let i=0; i<pageNumber; i++){
@@ -41,8 +37,6 @@ export default function ProductRender(){
 
     function changepage(event){
         window.scroll(0,0)
-        dispatch(actionCategory.changePageNumber(event.target.id))
-        // dispatch(actionCategory.changePage(event.target.id))
         setFirstProduct({page: parseInt(event.target.id)+1})
     }
 
@@ -87,7 +81,9 @@ export default function ProductRender(){
                 <div className="pages-number">
                     <div className="pages-number-main">
                         {pageNumberRender().map((item, index) => (
-                            <p onClick={changepage} id={index} key={index} style={firstProduct.get('page') == index+1?{backgroundColor:'black', color:'white'}: {backgroundColor:'white', color:'black'}} >{item+1}</p>
+                            !firstProduct.get('page')? 
+                            index == 0?<p onClick={changepage} id={index} key={index} style={{backgroundColor:'black', color:'white'}} >{item+1}</p>: <p onClick={changepage} id={index} key={index} style={{backgroundColor:'white', color:'black'}} >{item+1}</p>
+                            :<p onClick={changepage} id={index} key={index} style={firstProduct.get('page') == index+1?{backgroundColor:'black', color:'white'}: {backgroundColor:'white', color:'black'}} >{item+1}</p>
                         ))}
                     </div>
                 </div>

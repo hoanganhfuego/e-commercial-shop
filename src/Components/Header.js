@@ -11,26 +11,18 @@ export default function Headers(props){
     function increase(){
         setSortList('LOW TO HIGH')
         dispatch(action.increase())
-        dispatch(actionCategory.resetPage())
-        dispatch(actionCategory.reset())
     }
     function decrease(){
         setSortList('HIGH TO LOW')
         dispatch(action.decrease())
-        dispatch(actionCategory.resetPage())
-        dispatch(actionCategory.reset())
     }
     function onSale(category){
         setSortList('ON SALE')
-        dispatch(action.onSale(category))
-        dispatch(actionCategory.resetPage())
-        dispatch(actionCategory.reset())
+        dispatch(action.onSale())
     }
     function onNew(category){
         setSortList('NEW STUFF')
-        dispatch(action.onNew(category))
-        dispatch(actionCategory.resetPage())
-        dispatch(actionCategory.reset())
+        dispatch(action.onNew())
     }
     return(
         <div className="header">

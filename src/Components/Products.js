@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux/es/exports";
 import { actionCategory } from "../store/categorySlice";
 import { Route, Routes, useSearchParams } from "react-router-dom";
 import Page from "./Page";
+import { useEffect } from "react";
 
 function Products(){
     const data = useSelector(state => state.dataProduct.newValue)
@@ -26,8 +27,6 @@ function Products(){
 
     function changepage(event){
         window.scroll(0,0)
-        dispatch(actionCategory.changePageNumber(event.target.id))
-        // dispatch(actionCategory.changePage(event.target.id))
         setFirstProduct({page: parseInt(event.target.id)+1})
     }
 
@@ -45,7 +44,6 @@ function Products(){
             />
         )
     })
-    
 
     return(
         <div className="products">
@@ -59,9 +57,9 @@ function Products(){
                 <div className="pages-number">
                     <div className="pages-number-main">
                         {pageNumberRender().map((item, index) => (
-                            <p onClick={changepage} id={index} key={index} style={firstProduct.get('page')==index+1?{backgroundColor:'black', color:'white'}: {backgroundColor:'white', color:'black'}} >
-                                {item+1}
-                            </p>
+                            !firstProduct.get('page')? 
+                            index == 0?<p onClick={changepage} id={index} key={index} style={{backgroundColor:'black', color:'white'}} >{item+1}</p>: <p onClick={changepage} id={index} key={index} style={{backgroundColor:'white', color:'black'}} >{item+1}</p>
+                            :<p onClick={changepage} id={index} key={index} style={firstProduct.get('page') == index+1?{backgroundColor:'black', color:'white'}: {backgroundColor:'white', color:'black'}} >{item+1}</p>
                         ))}
                     </div>
                 </div>

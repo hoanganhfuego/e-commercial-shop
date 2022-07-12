@@ -1,11 +1,4 @@
 export const reducers = {
-    newData(state, action){
-        if(action.payload == 'all products') return {...state, newValue: state.value}
-        if(action.payload == 'tshirt') return {...state, newValue: state.value.filter(item => item.category == 'tshirt')}
-        if(action.payload == 'short') return {...state, newValue: state.value.filter(item => item.category == 'short')}
-        if(action.payload == 'jean') return {...state, newValue: state.value.filter(item => item.category == 'jean')}
-        if(action.payload == 'shirt') return {...state, newValue: state.value.filter(item => item.category == 'shirt')}
-    },
     increase(state, action){
         return {...state, newValue: state.value.slice().sort((a, b) => (a.price - b.price))}
     },
@@ -18,6 +11,9 @@ export const reducers = {
     onNew(state, action){
         return {...state, newValue: state.value.filter(item => item.status == 'new')}
     },
+    search(state, action){
+        return {...state, inputValue: [...action.payload]}
+    }
 }
 
 export const reducerCart = {

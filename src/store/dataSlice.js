@@ -5,7 +5,8 @@ import data from "../data";
 const dataSlice = createSlice({
     initialState: {
         value: data,
-        newValue: data
+        newValue: data,
+        inputValue: []
     },
     name :'data',
     reducers : reducers

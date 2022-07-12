@@ -3,8 +3,9 @@ import { actionCart } from "../store/cartSlice";
 import { Link, useSearchParams } from 'react-router-dom'
 import { actionCategory } from "../store/categorySlice";
 import { actionAside } from "../store/asideSlice";
+import {action} from "../store/dataSlice"
 import './cart.css'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Navbar(){
     const dispatch = useDispatch()
@@ -25,7 +26,6 @@ function Navbar(){
         dispatch(actionCart.cartIncrease(event.target.id))
     }
     function cartDecrease(event){
-        console.log('xin chao', cart)
         dispatch(actionCart.cartDecrease(event.target.id))
     }
     function cartDelete(event){
@@ -57,22 +57,36 @@ function Navbar(){
                 </div>
             </div>)
     })
-
+    
+    const [search, setSearch] = useState('')
+    const data = useSelector(state => state.dataProduct.newValue)
+    const [params, setParams] = useSearchParams()
+    function handleInput(event){
+        setSearch(event.target.value)
+        setParams({search: event.target.value})
+    }
+    useEffect(()=>{
+        if(!params.get('search')) dispatch(action.search(''))
+        else {const newValue = data.filter((item, index) => {
+            if(params.get('search')) return item.name.toLowerCase().includes(params.get('search'))
+        })
+        dispatch(action.search(newValue))}
+    }, [search])
+    
     return(
         <nav className="navbar">
             <Link to='/products' style={{color:'black', textDecoration: 'none'}}><div className="navbar-shop-name cs" onClick={toTop}>
                 <strong>emas</strong></div>
             </Link>
+
+            {/*  */}
+            <div className="navbar-input">
+                <input onChange={handleInput} ></input>
+            </div>
+            {/*  */}
+
             <div className="navbar-cart-icon">
                 <i className="fa-solid fa-cart-shopping cs" onClick={handleCart}><span>{cart}</span></i>
-                {/* <div className="navbar-cart-dropdown">
-                    <div className="navbar-cart-dropdown-main">
-                        {cartProduct}
-                    </div>
-                    {priceAmount.length > 0 && <p style={{border:'solid 2px black', borderRadius:'10px', backgroundColor: 'white', textAlign:'center'}}>total price: {priceAmount.length && priceAmount.reduce((a, b)=>{
-                        return a + b.price
-                    }, 0)}</p>}
-                </div> */}
                 <div className="navbar-slice" style={cartShow?{left:'0'}:{}} >
                     <div className="navbar-slice-main">
                         <div className="navbar-slice-cart-close" onClick={handleCart}>
@@ -94,7 +108,6 @@ function Navbar(){
             </div>
         </nav>
     )
-    // style={cartShow?{display:'block'}:{display:'none'}}
 }
 
 export default Navbar;

@@ -5,20 +5,16 @@ import Page from "./Page";
 
 export default function ProductRender(){
     const dispatch = useDispatch()
-    const inputData = useSelector(state => state.dataProduct.inputValue)
-    console.log(inputData, 'input')
     const params = useParams()
     const data = useSelector(state => state.dataProduct.newValue)
     const newData = ()=>{
-        if(inputData.length) return inputData
-        else if(params.type != 'all-collection'){
+        if(params.type != 'all-collection'){
             return data.filter(product => product.category == params.type)
         } 
         else {
             return data
         }
     }
-    console.log(newData(), 'newdata')
     const [firstProduct, setFirstProduct] = useSearchParams()
     const productAmout = 6
     const firstValue = ()=>{
@@ -88,9 +84,6 @@ export default function ProductRender(){
                     </div>
                 </div>
             </div>  
-            <Routes>
-                <Route path=":page" element={<Page /> } exact></Route>
-            </Routes>
         </div>
     )
 }

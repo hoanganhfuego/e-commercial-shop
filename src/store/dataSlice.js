@@ -6,7 +6,7 @@ const dataSlice = createSlice({
     initialState: {
         value: data,
         newValue: data,
-        inputValue: []
+        inputValue: ''
     },
     name :'data',
     reducers : reducers

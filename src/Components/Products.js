@@ -4,6 +4,7 @@ import { actionCategory } from "../store/categorySlice";
 import { Route, Routes, useSearchParams } from "react-router-dom";
 import Page from "./Page";
 import { useEffect } from "react";
+import ProductRender from "./ProductRender";
 
 function Products(){
     const data = useSelector(state => state.dataProduct.newValue)
@@ -51,7 +52,6 @@ function Products(){
                 <div className="products-main-child">
                     <Routes>
                         <Route path="/" element={dataProductRender}></Route>
-                        <Route path=":page" element={<Page /> } exact></Route>
                     </Routes>
                 </div>
                 <div className="pages-number">

@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import { actionCart } from "../store/cartSlice";
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, Routes, useSearchParams, Route } from 'react-router-dom'
 import { actionCategory } from "../store/categorySlice";
 import { actionAside } from "../store/asideSlice";
 import {action} from "../store/dataSlice"
 import './cart.css'
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import Product from "./Product";
 
 function Navbar(){
     const dispatch = useDispatch()
@@ -57,21 +58,30 @@ function Navbar(){
                 </div>
             </div>)
     })
-    
-    const [search, setSearch] = useState('')
-    const data = useSelector(state => state.dataProduct.newValue)
-    const [params, setParams] = useSearchParams()
+    const [isChoose, setIsChoose] = useState(false)
+    const ref = useRef()
+    const mainData = useSelector(state => state.dataProduct.value)
+    const [searchValue, setSearchValue] = useState('')
+    const [inputValue, setInputValue] = useState('')
     function handleInput(event){
-        setSearch(event.target.value)
-        setParams({search: event.target.value})
+        setSearchValue(event.target.value)
+    }
+    function handleDispatch(){
+        dispatch(action.search(searchValue))
     }
     useEffect(()=>{
-        if(!params.get('search')) dispatch(action.search(''))
-        else {const newValue = data.filter((item, index) => {
-            if(params.get('search')) return item.name.toLowerCase().includes(params.get('search'))
+        ref.current.addEventListener('focusout', ()=>{
+            setIsChoose(false)
         })
-        dispatch(action.search(newValue))}
-    }, [search])
+        ref.current.addEventListener('focusin', ()=>{
+            setIsChoose(true)
+        })
+        if(searchValue) 
+        {setInputValue(mainData.filter((item, index)=>{
+            return item.name.toLowerCase().includes(searchValue)
+        }))}
+        else setInputValue('')
+    }, [searchValue])
     
     return(
         <nav className="navbar">
@@ -79,9 +89,28 @@ function Navbar(){
                 <strong>emas</strong></div>
             </Link>
 
-            {/*  */}
+            {/*  */} 
             <div className="navbar-input">
-                <input onChange={handleInput} ></input>
+                <input onChange={handleInput} ref={ref}></input>
+                <Link to={`/search?search=${searchValue}`} onClick={handleDispatch}><span><i className="fa-solid fa-magnifying-glass"></i></span></Link>
+                {<div className="navbar-input-search-items" style={(inputValue.length>3 && isChoose)?{overflowY: "scroll"}:{}}>
+                    { inputValue && isChoose &&
+                        inputValue.map((product, index)=>{
+                            const {id, name, price, img, status, category} = product
+                            return (
+                                <Product
+                                    key = {index}
+                                    id = {id}
+                                    name = {name}
+                                    img = {img}
+                                    price = {price}
+                                    status = {status}
+                                    category = {category}
+                                />
+                            )
+                        }
+                    )}
+                </div>}
             </div>
             {/*  */}
 
@@ -90,7 +119,7 @@ function Navbar(){
                 <div className="navbar-slice" style={cartShow?{left:'0'}:{}} >
                     <div className="navbar-slice-main">
                         <div className="navbar-slice-cart-close" onClick={handleCart}>
-                            <i className="fa-solid fa-angles-right"></i>
+                            <i className="fa-solid fa-angles-right" placeholder='xin chao'></i>
                         </div>
                         <div className="navbar-slice-cart" style={cartShow? {right:'0'} :{}}>
                             <div className="navbar-cart-dropdown-main">

@@ -79,6 +79,7 @@ a{
 }
 
 .navbar{
+  border-bottom: solid 2px black;
   z-index: 1;
   position: sticky;
   top: 0;
@@ -231,7 +232,6 @@ a{
 
 .product-img{
   position: relative;
-  z-index: -1;
 }
 
 .product-img span{

@@ -12,7 +12,7 @@ export const reducers = {
         return {...state, newValue: state.value.filter(item => item.status == 'new')}
     },
     search(state, action){
-        return {...state, inputValue: [...action.payload]}
+        return {...state, inputValue: action.payload}
     }
 }
 

@@ -278,6 +278,11 @@
 
 
 @media only screen and (max-width: 812px){
+    .homepage-navbar{
+        width: inherit;
+        height: 47px;
+        position: fixed;
+    }
     .homepage-navbar-logo{
         font-size: 40px;
     }

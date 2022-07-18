@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux/es/exports";
 import { actionCategory } from "../store/categorySlice";
 import { Route, Routes, useSearchParams } from "react-router-dom";
 import Page from "./Page";
+import Aside from "../Components/Aside";
 import { useEffect } from "react";
 import ProductRender from "./ProductRender";
 
@@ -47,6 +48,8 @@ function Products(){
     })
 
     return(
+        <>
+        <Aside/>
         <div className="products">
             <div className="products-main">
                 <div className="products-main-child">
@@ -64,7 +67,7 @@ function Products(){
                     </div>
                 </div>
             </div>
-        </div>
+        </div></>
     )
 }
 export default Products;

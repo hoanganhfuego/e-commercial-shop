@@ -56,7 +56,7 @@ export default function SearchPage(){
                     })
                     :<h3>please try again</h3>}
             </div>
-            <div className="search-page-number">
+            {params.get('search')?<div className="search-page-number">
                 {
                     pageNumberRender().map((item, index) => {
                         return (!params.get('page')? 
@@ -66,7 +66,7 @@ export default function SearchPage(){
                         :<p onClick={handleChangePage} key={index} style={params.get('page')==index+1?{backgroundColor:'black', color:'white'}:{}}>{item+1}</p>)
                     })
                 }
-            </div>
+            </div>:''}
         </div>
         <Footer />
         </div>

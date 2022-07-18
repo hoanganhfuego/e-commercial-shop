@@ -93,6 +93,7 @@ a{
   text-transform: uppercase;
   height: 90px;
   font-size: 60px;
+  margin-bottom: 20px;
 }
 .navbar-cart-dropdown{
   position: absolute;
@@ -442,7 +443,7 @@ input {
     font-size: 40px;
   }
   .header{
-    margin-top:90px;
+    margin-top:110px;
     margin-bottom: 10px;
   }
   .header-main{

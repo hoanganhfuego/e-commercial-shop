@@ -2,9 +2,6 @@ import {Link} from "react-router-dom";
 import './homepage.css'
 import { useEffect, useState } from "react";
 import Footer from "../Components/Footer";
-import { actionAside } from "../store/asideSlice";
-import { actionCategory } from "../store/categorySlice";
-import { action } from "../store/dataSlice";
 import { useDispatch } from "react-redux";
 
 export default function HomePage(){
@@ -141,6 +138,53 @@ export default function HomePage(){
         if(navbarItem == 'Contact')setPopUp(contact)
         if(navbarItem == 'Service')setPopUp(service)
     }
+    const dataHomepageChild = [
+        {
+            collectionName: 'NEW COLECTION',
+            slogan: 'BLAST THIS SUMMER',
+            img:'https://www.hm.com/nt-north/uploads/2022/06/FNP-1006A-3x2-summer-stunners-1920x1280.jpg',
+            link:'all-collection'
+        },
+        {
+            collectionName:'NEW T-SHIRT COLECTION',
+            slogan:'BLAST THIS SUMMER',
+            img:'https://www.hm.com/nt-north/uploads/2022/06/5026F-3x2-1-1920x1280.jpg',
+            link:'tshirt'
+        },
+        {
+            collectionName:'NEW SHORT COLECTION',
+            slogan:'BLAST THIS SUMMER',
+            img:'https://www.hm.com/nt-north/uploads/2022/06/4076A-3x2-paw-patrol-1920x1280.jpg',
+            link:'short'
+        },
+        {
+            collectionName:'NEW JEAN COLECTION',
+            slogan:'BLAST THIS SUMMER',
+            img:'https://www.hm.com/nt-north/uploads/2022/06/4115C-3x2-making-a-splash-1920x1280.jpg',
+            link:'jean'
+        },
+        {
+            collectionName:'NEW SHIRT COLECTION',
+            slogan:'BLAST THIS SUMMER',
+            img:'https://www.hm.com/nt-north/uploads/2022/06/FNP-5115A-3x2-2-smiley-collection-1920x1280.jpg',
+            link:'shirt'
+        }
+    ]
+    function HomepageChild(props){
+        const {data} = props
+        return(
+            <div className="row-homepage" >
+                <div className="test">
+                    <div className="product-content">
+                        <h3><strong>{data.collectionName}</strong></h3>
+                        <h4><strong>{data.slogan}</strong></h4>
+                        <Link to={`/products/`+data.link} style={{ textDecoration: 'none', color: 'black' }}><button value=''>VIEW NOW</button></Link>
+                    </div>
+                </div>
+                <img src={data.img} width={'100%'}></img>
+            </div>
+        )
+}
 
     return(
         <div className="homepage">
@@ -154,7 +198,7 @@ export default function HomePage(){
             <div className="homepage-pop-up-mobile" style={isChoosePop?{left:'0'}:{}}>
                 <div>
                     <Link to={`/`}><p>Home</p></Link>
-                    <Link to={`/products`}><p>Collection</p></Link>
+                    <Link to={`/products/all-collection`}><p>Collection</p></Link>
                 </div>
                 <div className="homepage-pop-up-mobile-cover" onClick={()=>{setIsChoosePop(false)}}>
                 </div>
@@ -164,7 +208,7 @@ export default function HomePage(){
                     <i className="fa-solid fa-bars"></i>
                     <p>About us</p>
                 </div>
-                <Link to={`/products`} >
+                <Link to={`/products/all-collection`} >
                     <div className="homepage-navbar-logo"><strong>EMAS</strong></div>
                 </Link>
                 <ul>
@@ -174,54 +218,14 @@ export default function HomePage(){
                 </ul>
             </div>
             <div className="row-homepage">
-                <div className="test">
-                    <div className="product-content">
-                        <h3><strong>NEW COLECTION</strong></h3>
-                        <h4><strong>BLAST THIS SUMMER</strong></h4>
-                        <Link to={`/products/all-collection`} style={{ textDecoration: 'none', color: 'black' }}><button value=''>VIEW NOW</button></Link>
-                    </div>
-                </div>
-                <img src="https://www.hm.com/nt-north/uploads/2022/06/FNP-1006A-3x2-summer-stunners-1920x1280.jpg" width={'100%'}></img>
-            </div>
-            <div className="row-homepage">
-                <div className="test">
-                    <div className="product-content">
-                        <h3><strong>NEW T-SHIRT COLECTION</strong></h3>
-                        <h4><strong>BLAST THIS SUMMER</strong></h4>
-                        <Link to={`/products/tshirt`} style={{ textDecoration: 'none', color: 'black' }}><button value='t-shirt'>VIEW NOW</button></Link>
-                    </div>
-                </div>
-                <img src="https://www.hm.com/nt-north/uploads/2022/06/5026F-3x2-1-1920x1280.jpg" width={'100%'}></img>
-                </div>
-            <div className="row-homepage">
-                <div className="test">
-                    <div className="product-content" >
-                        <h3><strong>NEW SHORT COLECTION</strong></h3>
-                        <h4><strong>BLAST THIS SUMMER</strong></h4>
-                        <Link to={`/products/short`} style={{ textDecoration: 'none', color: 'black' }}><button value='short'>VIEW NOW</button></Link>
-                    </div>
-                </div>
-                    <img src="https://www.hm.com/nt-north/uploads/2022/06/4076A-3x2-paw-patrol-1920x1280.jpg" width={'100%'}></img>
-                </div>
-            <div className="row-homepage">
-                <div className="test">
-                    <div className="product-content" >
-                        <h3><strong>NEW JEAN COLECTION</strong></h3>
-                        <h4><strong>BLAST THIS SUMMER</strong></h4>
-                        <Link to={`/products/jean`} style={{ textDecoration: 'none', color: 'black' }}><button value='jean'>VIEW NOW</button></Link>
-                    </div>
-                </div>
-                <img src="https://www.hm.com/nt-north/uploads/2022/06/4115C-3x2-making-a-splash-1920x1280.jpg" width={'100%'}></img>
-            </div>
-            <div className="row-homepage">
-                <div className="test">  
-                    <div className="product-content" >
-                        <h3><strong>NEW SHIRT COLECTION</strong></h3>
-                        <h4><strong>BLAST THIS SUMMER</strong></h4>
-                        <Link to={`/products/shirt`} style={{ textDecoration: 'none', color: 'black' }}><button value='shirt'>VIEW NOW</button></Link>
-                    </div>
-                </div>
-                <img src="https://www.hm.com/nt-north/uploads/2022/06/FNP-5115A-3x2-2-smiley-collection-1920x1280.jpg" width={'100%'}></img>
+                {
+                    dataHomepageChild.map((item, index)=>{
+                        return <HomepageChild 
+                        key={index}
+                        data={item}
+                        index={index}/>
+                    })
+                }
             </div>
             <Footer />
         </div>

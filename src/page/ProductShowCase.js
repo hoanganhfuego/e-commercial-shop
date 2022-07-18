@@ -20,8 +20,8 @@ export default function ProductShowCase(){
                 <div className="body-main-content">
                     <Aside/>
                     <Routes>
-                        <Route path="*" element={<Products />}></Route>
-                        <Route path=":type/*" element={<ProductRender />} exact/>
+                        <Route path="/*" element={<Products />}></Route>
+                        <Route path="/:type" element={<ProductRender />} exact/>
                     </Routes>
                 </div>
                 <SeenProduct />

@@ -1,6 +1,6 @@
 import Product from "./Product";
 import { useParams,useSearchParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux/es/exports";
+import { useSelector } from "react-redux/es/exports";
 
 export default function ProductRender(){
     const [paramSearch, setPramSearch] = useSearchParams()
@@ -88,7 +88,7 @@ export default function ProductRender(){
         <div className="products">
             <div className="products-main">
                 <div className="products-main-child">
-                    {dataToRender.length? dataToRender: <h1>keep going</h1>}
+                    {dataToRender.length? dataToRender: <h1>product unavailable</h1>}
                 </div>
                 <div className="pages-number">
                     <div className="pages-number-main">

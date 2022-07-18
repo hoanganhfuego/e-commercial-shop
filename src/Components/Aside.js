@@ -4,13 +4,6 @@ import { Link, useParams } from "react-router-dom";
 function Aside(){
     const [category, setCategory] = useState('all products')
     const param = useParams()
-    const cateChoose = {
-        all: false,
-        tshirt: false,
-        short: false,
-        jean: false,
-        shirt: false
-    }
     function categoryChange(e){
         setCategory(e.target.innerHTML)
     }
@@ -31,7 +24,7 @@ function Aside(){
                     <li className="row-5 cs" id="3" onClick={categoryChange} style={param.type == 'short'?{border: 'solid 2px black'}:{border:'none'}}>short</li>
                 </Link>
                 <Link to={`/products/${'jean'}`}>
-                    <li className="row-5 cs" id="4"  onClick={categoryChange}style={param.type == 'jean'?{border: 'solid 2px black'}:{border:'none'}}>jean</li>
+                    <li className="row-5 cs" id="4" onClick={categoryChange}style={param.type == 'jean'?{border: 'solid 2px black'}:{border:'none'}}>jean</li>
                 </Link>
                 <Link to={`/products/${'shirt'}`}>
                     <li className="row-5 cs" id="5" onClick={categoryChange} style={param.type == 'shirt'?{border: 'solid 2px black'}:{border:'none'}}>shirt</li>

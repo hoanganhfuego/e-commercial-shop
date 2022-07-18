@@ -233,8 +233,12 @@
     .navbar-slice-cart{
         width: 100%;
     }
-    .navbar-input input:focus{
+    .navbar-input-input{
         width: 100px;
+        max-width: 100px;
+    }
+    .navbar-input-search-items{
+        display: none;
     }
     .navbar-input input{
         border: solid 2px black;

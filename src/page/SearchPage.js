@@ -13,7 +13,7 @@ export default function SearchPage(){
     const data = mainData.filter(item=>{
         return item.name.toLowerCase().includes(params.get('search'))
     })
-    const productPerPage= 6
+    const productPerPage= 10
     const pageNumber = Math.ceil(data.length/productPerPage)
     const pageNumberRender = ()=>{
         let number = []
@@ -31,44 +31,45 @@ export default function SearchPage(){
     }
 
     return(
-        <div className="search-page">
-        <Navbar />
-        <h2>results</h2>
-        <div className="search-page-main-cover">
-            <div className="search-page-main">
-                {params.get('search')?
-                    dataRender.map((product, index)=>{
-                        const {id, name, price, img, status, category} = product
-                        return (
-                            <>
-                                <Product
-                                    key = {index}
-                                    id = {id}
-                                    name = {name}
-                                    img = {img}
-                                    price = {price}
-                                    status = {status}
-                                    category = {category}
-                                />
-                                <p className="break"></p>
-                            </>
-                        )
-                    })
-                    :<h3>please try again</h3>}
+        <>
+            <div className="search-page">
+            <Navbar />
+                <h2>results</h2>
+                <div className="search-page-main-cover">
+                    <div className="search-page-main">
+                        {params.get('search')?
+                            dataRender.map((product, index)=>{
+                                const {id, name, price, img, status, category} = product
+                                return (
+                                    <>
+                                        <Product
+                                            key = {index}
+                                            id = {id}
+                                            name = {name}
+                                            img = {img}
+                                            price = {price}
+                                            status = {status}
+                                            category = {category}
+                                        />
+                                    </>
+                                )
+                            })
+                            :<h3>please try again</h3>}
+                    </div>
+                        {params.get('search')?<div className="search-page-number">
+                            {
+                                pageNumberRender().map((item, index) => {
+                                    return (!params.get('page')? 
+                                    index == 0?
+                                    <p onClick={handleChangePage} key={index} style={{backgroundColor:'black', color:'white'}}>{item+1}</p>
+                                    :<p onClick={handleChangePage} key={index} style={{backgroundColor:'white', color:'black'}}>{item+1}</p>
+                                    :<p onClick={handleChangePage} key={index} style={params.get('page')==index+1?{backgroundColor:'black', color:'white'}:{}}>{item+1}</p>)
+                                })
+                            }
+                        </div>:''}
+                    </div>
+            <Footer />
             </div>
-            {params.get('search')?<div className="search-page-number">
-                {
-                    pageNumberRender().map((item, index) => {
-                        return (!params.get('page')? 
-                        index == 0?
-                        <p onClick={handleChangePage} key={index} style={{backgroundColor:'black', color:'white'}}>{item+1}</p>
-                        :<p onClick={handleChangePage} key={index} style={{backgroundColor:'white', color:'black'}}>{item+1}</p>
-                        :<p onClick={handleChangePage} key={index} style={params.get('page')==index+1?{backgroundColor:'black', color:'white'}:{}}>{item+1}</p>)
-                    })
-                }
-            </div>:''}
-        </div>
-        <Footer />
-        </div>
+        </>
     )
 }

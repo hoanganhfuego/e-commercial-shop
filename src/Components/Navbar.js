@@ -69,14 +69,11 @@ function Navbar(){
         dispatch(action.search(searchValue))
     }
     useEffect(()=>{
-        const navbarInput = document.querySelector('.navbar-input')
-        navbarInput.addEventListener('focusout', (e)=>{
-            setTimeout(() => {
-                setIsChoose(false)
-            }, 1000); 
-        })
-        navbarInput.addEventListener('focusin', ()=>{
-            setIsChoose(true)
+        const navbarInput = document.querySelector('.App')
+        navbarInput.addEventListener('click', (e)=>{
+            const element = e.target.className
+            if(element == 'navbar-input-input') setIsChoose(true)
+            else setIsChoose(false)
         })
 
         if(searchValue) 
@@ -98,7 +95,7 @@ function Navbar(){
             {/*  */}
 
             <div className="navbar-cart-icon">
-                <div className="navbar-input">
+                <div className="navbar-input" >
                     <div className="navbar-input-search-bar">
                         <input onChange={handleInput} className="navbar-input-input" style={(isChoose)?{width:'200px'}:{}}></input>
                         <Link to={`/search?search=${searchValue}`} onClick={handleDispatch}>

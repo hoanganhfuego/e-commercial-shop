@@ -59,9 +59,20 @@
     .search-page{
         margin-top: 88px;
     }
+    .search-page h2{
+        margin-left: 10px;
+    }
     .search-page-main{
+        box-sizing: border-box;
+        padding: 10px;
         display: flex;
         flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+        flex-wrap: wrap;
         align-items: center;
+    }
+    .search-page-main .product{
+        width: 49%;
     }
 }

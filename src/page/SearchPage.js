@@ -6,8 +6,12 @@ import Product from "../Components/Product"
 import Footer from "../Components/Footer"
 import './searchPage.css'
 import ProductRender from "../Components/ProductRender"
+import { useEffect } from "react"
 
 export default function SearchPage(){
+    useEffect(()=>{
+        window.scroll(0,0)
+    }, [])
     const mainData = useSelector(state => state.dataProduct.value)
     const [params, setParams] = useSearchParams()
     const data = mainData.filter(item=>{

@@ -21,7 +21,8 @@ export default function ProductDetail(){
 
     useEffect(()=>{
         window.scroll(0,0)
-    },[])
+        setImg(data[params.id].img)
+    },[params.id])
 
     function handleImg(event){
         // console.log((event.target.src))

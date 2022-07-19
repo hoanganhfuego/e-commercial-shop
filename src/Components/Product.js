@@ -16,7 +16,7 @@ function Product(props){
     }
    
     return(
-        <div key={id} name={name} className='product' onClick={()=>console.log('xin chao')}>
+        <div key={id} name={name} className='product'>
             <div className="product-img-btn" >
                 <Link to={`/productdetail/${id}/${name}`}>
                     <div className="product-img">

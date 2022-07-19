@@ -78,7 +78,6 @@ const data = [
             name: "CHARCOAL ARCADEGAME TEE",
             price: 5100,
             img: "https://product.hstatic.net/200000018774/product/4_7060d4adb602405292596221796d6391.jpg",
-            status: "outstock",
             category: "tshirt"
         },
         {

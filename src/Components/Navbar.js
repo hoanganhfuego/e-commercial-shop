@@ -70,10 +70,10 @@ function Navbar(){
     }
     useEffect(()=>{
         const navbarInput = document.querySelector('.navbar-input')
-        navbarInput.addEventListener('focusout', ()=>{
+        navbarInput.addEventListener('focusout', (e)=>{
             setTimeout(() => {
                 setIsChoose(false)
-            }, 100); 
+            }, 1000); 
         })
         navbarInput.addEventListener('focusin', ()=>{
             setIsChoose(true)
@@ -97,7 +97,7 @@ function Navbar(){
             {/*  */} 
             {/*  */}
 
-            <div className="navbar-cart-icon" onClick={(e)=>{console.log(e.target)}}>
+            <div className="navbar-cart-icon">
                 <div className="navbar-input">
                     <div className="navbar-input-search-bar">
                         <input onChange={handleInput} className="navbar-input-input" style={(isChoose)?{width:'200px'}:{}}></input>

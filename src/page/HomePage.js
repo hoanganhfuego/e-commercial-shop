@@ -128,15 +128,15 @@ export default function HomePage(){
         </div>
     )
     const [popUp, setPopUp] = useState('')
-    const [isChoosePop, setIsChoosePop] = useState(false)
+    const [isChoose, setIsChoose] = useState(false)
 
     function handleNavbar(event){
         const navbarItem = event.target.innerHTML
-        setIsChoosePop(true)
-        if(navbarItem == 'About us' || navbarItem == '') setPopUp(about)
-        if(navbarItem == 'Location')setPopUp(location)
-        if(navbarItem == 'Contact')setPopUp(contact)
-        if(navbarItem == 'Service')setPopUp(service)
+        setIsChoose(true)
+        if(navbarItem == 'About us' || navbarItem == '') {setPopUp(about)}
+        if(navbarItem == 'Location') {setPopUp(location)}
+        if(navbarItem == 'Contact') {setPopUp(contact)}
+        if(navbarItem == 'Service') {setPopUp(service)}
     }
     const dataHomepageChild = [
         {
@@ -188,19 +188,23 @@ export default function HomePage(){
 
     return(
         <div className="homepage">
-            {isChoosePop && 
-            <div className="homepage-pop-up">
-                <div className="homepage-pop-up-main-content">
-                    {popUp}
+            <div className="homepage-pop-up" style={isChoose?{left: '0'}:{}}>
+                <div className="homepage-pop-up-cover">
+                    <div className="homepage-pop-up-main-content">
+                        {popUp}
+                    </div>
                 </div>
-                <div className="homepage-cover" onClick={()=>setIsChoosePop(false)}></div>
-            </div>}
-            <div className="homepage-pop-up-mobile" style={isChoosePop?{left:'0'}:{}}>
+                <div className="homepage-cover" onClick={()=>{
+                        setIsChoose(false)
+                    }}>
+                </div>
+            </div>
+            <div className="homepage-pop-up-mobile" style={isChoose?{left:'0'}:{}}>
                 <div>
                     <Link to={`/`}><p>Home</p></Link>
                     <Link to={`/products/all-collection`}><p>Collection</p></Link>
                 </div>
-                <div className="homepage-pop-up-mobile-cover" onClick={()=>{setIsChoosePop(false)}}>
+                <div className="homepage-pop-up-mobile-cover" onClick={()=>{setIsChoose(false)}}>
                 </div>
             </div>
             <div className="homepage-navbar">
@@ -217,7 +221,7 @@ export default function HomePage(){
                     <li onClick={handleNavbar}>Service</li>
                 </ul>
             </div>
-            <div className="row-homepage">
+            <div className="row-homepage-cover">
                 {
                     dataHomepageChild.map((item, index)=>{
                         return <HomepageChild 

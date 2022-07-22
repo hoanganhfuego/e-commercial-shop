@@ -1,4 +1,6 @@
 .search-page{
+    box-sizing: border-box;
+    padding: 0 10px;
     width: 1380px;
 }
 
@@ -23,6 +25,7 @@
 .search-page-main .product{
     display: inline-block;
     width: 276px;
+    box-shadow: none;
 }
 /* 
 .search-page-main .product:nth-child(3n-1) {
@@ -64,7 +67,6 @@
     }
     .search-page-main{
         box-sizing: border-box;
-        padding: 10px;
         display: flex;
         flex-direction: row;
         align-items: flex-start;

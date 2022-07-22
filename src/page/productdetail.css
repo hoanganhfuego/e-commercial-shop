@@ -170,3 +170,32 @@
         color: black;
     }
 }
+
+@media only screen and (max-width: 1112px){
+    .product-detail-page{
+        width: inherit;
+    }
+    .product-detail-page-main img {
+        width: 700px;
+    }
+    .product-detail-page-cover{
+        width: inherit;
+    }
+    .product-detail-page-cover-1{
+        width: 80%;
+    }
+    .product-detail-images img{
+        width: 100px;
+        height: 140px;
+    }
+    .product-detail-page-infor-cover button{
+        color: black;
+        border: solid 2px black;
+    }
+    .product-detail-size{
+        width: 100%;
+    }
+    .product-detail-size img{
+        width: 100%;
+    }
+}

@@ -7,6 +7,7 @@ import {action} from "../store/dataSlice"
 import './cart.css'
 import { useEffect, useState } from "react";
 import Product from "./Product";
+import { flushSync } from "react-dom";
 
 function Navbar(){
     const dispatch = useDispatch()
@@ -21,7 +22,7 @@ function Navbar(){
         dispatch(actionCategory.resetPage())
     }
     function handleCart(){
-        setCartShow(prev => !prev)
+        setCartShow(false)
     }
     function cartIncrease(event){
         dispatch(actionCart.cartIncrease(event.target.id))
@@ -68,14 +69,15 @@ function Navbar(){
     function handleDispatch(){
         dispatch(action.search(searchValue))
     }
+    function handleFocusIn(){
+        setIsChoose(true)
+    }
+    function handleFocusOut(){
+        setTimeout(() => {
+            setIsChoose(false)
+        }, 1000);
+    }
     useEffect(()=>{
-        const navbarInput = document.querySelector('.App')
-        navbarInput.addEventListener('click', (e)=>{
-            const element = e.target.className
-            if(element == 'navbar-input-input') setIsChoose(true)
-            else setIsChoose(false)
-        })
-
         if(searchValue) 
         {setInputValue(mainData.filter((item, index)=>{
             return item.name.toLowerCase().includes(searchValue)
@@ -95,7 +97,7 @@ function Navbar(){
             {/*  */}
 
             <div className="navbar-cart-icon">
-                <div className="navbar-input" >
+                <div className="navbar-input" onFocus={handleFocusIn} onBlur={handleFocusOut}>
                     <div className="navbar-input-search-bar">
                         <input onChange={handleInput} className="navbar-input-input" style={(isChoose)?{width:'200px'}:{}}></input>
                         <Link to={`/search?search=${searchValue}`} onClick={handleDispatch}>
@@ -121,13 +123,10 @@ function Navbar(){
                         )}
                     </div>
                 </div>
-                <i className="fa-solid fa-cart-shopping cs" onClick={handleCart}><span>{cart}</span></i>
-                <div className="navbar-slice" style={cartShow?{display:'block', right:'0'}:{}} >
+                <i className="fa-solid fa-cart-shopping cs" onClick={()=>setCartShow(prev => !prev)}><span>{cart}</span></i>
+                <div className="navbar-slice" style={cartShow?{right:'0'}:{}} >
                     <div className="navbar-slice-main">
-                        {/* <div className="navbar-slice-cart-close" onClick={handleCart}>
-                            <i className="fa-solid fa-angles-right" placeholder='xin chao'></i>
-                        </div> */}
-                        <div className="navbar-slice-cart" style={cartShow? {display:'block', right:'0'} :{}}>
+                        <div className="navbar-slice-cart">
                             <div className="navbar-cart-dropdown-main">
                                 {cartProduct}
                             </div>

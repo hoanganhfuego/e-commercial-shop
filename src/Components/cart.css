@@ -1,50 +1,41 @@
 .navbar-slice{
-    display: none;
-    z-index: 0;
-    position: absolute;
-    top: 90px;
+    z-index: -1;
+    position: fixed;
+    top: 131px;
     width: 100%;
     height: 100vh;
-    /* background-color: black;
-    opacity: 0.5; */
-    background: rgba(0,0,0,0.5);
+    right: -3000px;
+    transition: right 1000ms;
+    display: flex;
+    justify-content: center;
 }
 
 .navbar-slice-cart-handle{
+    background: rgba(0,0,0,0.5);
     width: inherit;
     height: inherit;
 }
 
 .navbar-slice-main{
-    position: relative;
-    width: 100%;
+    width: 1380px;
     height: 100vh;
-}
-
-.navbar-slice-handleCart{
-    width: inherit;
-    height: inherit;
+    float: right;
 }
 
 .navbar-slice-cart{
-    display: none;
     z-index: 12;
-    position: relative;
-    overflow-y: scroll;
+    position: fixed;
     border: solid 1px black;
-    border-left: none;
-    position: absolute;
-    float: right;
     background-color: white;
-    width: 30%;
+    width: 20%;
     height: 100vh;
 }
 .total-price{
-    position: fixed;
+    position: relative;
     bottom: 20px;
-    width: 377px;
+    width: 90%;
     height: 100px;
-    margin-left: 10px;
+    margin: 10px;
 }
 .total-price div{
     width: 100%;
@@ -122,15 +113,25 @@
 }
 
 .navbar-cart-dropdown-main{
-    overflow: visible;
+    height: 70%;
+    overflow-y: scroll;
 }
 
 .navbar-input{
     margin-right: 20px;
     position: relative;
     overflow: visible;
+    height: 29px;
 }
 
+.navbar-input-search-items{
+    width: inherit;
+    box-sizing: border-box;
+    padding: 10px;
+    position: absolute;
+    top: 29px;
+    height: 250px;
+}
 .navbar-input a{
     display: flex;
     align-items: center;
@@ -156,14 +157,6 @@
     font-size: 25px;
 }
 
-.navbar-input-search-items{
-    width: inherit;
-    box-sizing: border-box;
-    padding: 10px;
-    position: absolute;
-    top: 29px;
-    height: 250px;
-}
 
 .navbar-input-search-bar{
     display: flex;
@@ -230,9 +223,17 @@
 }
 
 @media only screen and (max-width: 812px){
+    .navbar-slice{
+        top:90px;
+    }
     .navbar-slice-cart{
         width: 100%;
+        border: none;
     }
+    .navbar-slice-main{
+        width: inherit;
+    }
+    
     .navbar-input-input{
         width: 100px;
         max-width: 100px;
@@ -242,5 +243,22 @@
     }
     .navbar-input input{
         border: solid 2px black;
+    }
+}
+
+@media only screen and (max-width: 1112px) and (min-width: 813px) {
+    .navbar-slice{
+        width: 100%;
+        top:131px;
+    }
+    .navbar-slice-main{
+        width: 100%;
+    }
+    .navbar-slice-cart{
+        width: 40%;
+        border: none;
+    }
+    .navbar-slice-cart-handle{
+        width: 100%;
     }
 }

@@ -73,9 +73,7 @@ function Navbar(){
         setIsChoose(true)
     }
     function handleFocusOut(){
-        setTimeout(() => {
-            setIsChoose(false)
-        }, 1000);
+        setIsChoose(false)
     }
     useEffect(()=>{
         if(searchValue) 
@@ -104,7 +102,7 @@ function Navbar(){
                             <i className="fa-solid fa-magnifying-glass"></i>
                         </Link>
                     </div>
-                    <div className="navbar-input-search-items scroll4" style={(inputValue.length>3 && isChoose)?{overflowY: "scroll"}:{}}>
+                    <div className="navbar-input-search-items scroll4" style={(inputValue.length>3 && isChoose)?{overflowY: "scroll"}:{}} onMouseDown={(e)=>{e.preventDefault()}}>
                         {inputValue && isChoose &&
                             inputValue.map((product, index)=>{
                                 const {id, name, price, img, status, category} = product

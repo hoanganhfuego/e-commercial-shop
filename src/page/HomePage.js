@@ -124,7 +124,7 @@ export default function HomePage(){
     const service = (
         <div className="pop-up-service">
             <p>SERVICE</p>
-            <p>WE HAVE NO RETURN POLICIES, YOU DUMB B*TCH</p>
+            <p>WE HAVE NO RETURN POLICIES</p>
         </div>
     )
     const [popUp, setPopUp] = useState('')
